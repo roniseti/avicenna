@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+enum TextFieldStyle {
+  filled, border
+}
+
 class Colors {
   Colors._();
 

@@ -3,10 +3,6 @@ import 'package:flutter/services.dart';
 
 import 'values.dart' as av;
 
-enum TextFieldStyle {
-  filled, border
-}
-
 /// if using the decoration, please add this
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
 ///   border: InputBorder.none
@@ -27,7 +23,7 @@ class TextField extends StatelessWidget {
     this.maxLength,
     this.helperText,
     this.hintText,
-    this.textFieldStyle = TextFieldStyle.filled
+    this.textFieldStyle = av.TextFieldStyle.filled
   }) : super(key: key);
 
   final String? title;
@@ -44,7 +40,7 @@ class TextField extends StatelessWidget {
   final int? maxLength;
   final String? helperText;
   final String? hintText;
-  final TextFieldStyle textFieldStyle;
+  final av.TextFieldStyle textFieldStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +56,10 @@ class TextField extends StatelessWidget {
             height: 44,// 51.2,
             decoration: BoxDecoration(
               color: enabled
-                  ? textFieldStyle == TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
+                  ? textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
                   : av.Colors.textFieldFillDisabled,
               borderRadius: const BorderRadius.all(Radius.circular(8)),
-              border: textFieldStyle == TextFieldStyle.filled
+              border: textFieldStyle == av.TextFieldStyle.filled
                   ? null
                   : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
               // boxShadow: av.Props.boxShadowVerySoft
@@ -78,7 +74,7 @@ class TextField extends StatelessWidget {
               maxLength: maxLength,
               style: TextStyle(color: enabled ? av.Colors.black : av.Colors.thirdBlack),
               decoration: decoration ?? InputDecoration(
-                contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
+                contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
                 border: InputBorder.none,
                 errorStyle: const TextStyle(
                     shadows: [
@@ -121,7 +117,7 @@ class PasswordField extends StatefulWidget {
     this.enabled = true,
     this.maxLength,
     this.helperText,
-    this.textFieldStyle = TextFieldStyle.filled,
+    this.textFieldStyle = av.TextFieldStyle.filled,
   }) : super(key: key);
 
   final String title;
@@ -137,7 +133,7 @@ class PasswordField extends StatefulWidget {
   final bool enabled;
   final int? maxLength;
   final String? helperText;
-  final TextFieldStyle textFieldStyle;
+  final av.TextFieldStyle textFieldStyle;
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -167,10 +163,10 @@ class _PasswordFieldState extends State<PasswordField> {
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             color: widget.enabled
-                ? widget.textFieldStyle == TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
+                ? widget.textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
                 : av.Colors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: widget.textFieldStyle == TextFieldStyle.filled
+            border: widget.textFieldStyle == av.TextFieldStyle.filled
                 ? null
                 : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
@@ -190,7 +186,7 @@ class _PasswordFieldState extends State<PasswordField> {
                     maxLength: widget.maxLength,
                     style: TextStyle(color: widget.enabled ? av.Colors.black : av.Colors.thirdBlack),
                     decoration: widget.decoration ?? InputDecoration(
-                      contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
+                      contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
                       border: InputBorder.none,
                       // suffixIcon: Padding(
                       //   padding: EdgeInsetsDirectional.only(end: 12.0),

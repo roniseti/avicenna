@@ -22,14 +22,15 @@ class Loading extends StatelessWidget {
 
 /// Show CircularProgressIndicator wrapped with round Container as a Dialog
 class LoadingDialog extends StatelessWidget {
+  const LoadingDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       elevation: 0,
       insetPadding: EdgeInsets.all(MediaQuery.of(context).size.width / 2 - 24),
-      contentPadding: EdgeInsets.all(0),
-      content: Loading(),
+      contentPadding: const EdgeInsets.all(0),
+      content: const Loading(),
       // Container(
       //   height: 48,
       //   width: 48,

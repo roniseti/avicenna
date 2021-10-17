@@ -15,7 +15,8 @@ class DropDownPicker extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.decoration,
-    this.enabled = true
+    this.enabled = true,
+    this.textFieldStyle = av.TextFieldStyle.filled
   }) : super(key: key);
 
   final List<String> items;
@@ -27,6 +28,7 @@ class DropDownPicker extends StatelessWidget {
   final bool obscureText;
   final InputDecoration? decoration;
   final bool enabled;
+  final av.TextFieldStyle textFieldStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +43,28 @@ class DropDownPicker extends StatelessWidget {
         Container(
           height: 44, // 51.2,
           decoration: BoxDecoration(
-            color: enabled ? av.Colors.textFieldFill : av.Colors.textFieldFillDisabled,
+            color: enabled
+                ? textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
+                : av.Colors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            // border: Border.all(width: 1.6, color: av.Colors.textFieldBorder),
+            border: textFieldStyle == av.TextFieldStyle.filled
+                ? null
+                : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
           ),
           child: DropdownButtonFormField<String>(
             value: initialValue == '' ? null : initialValue,
             hint: hint,
-            decoration: const InputDecoration(
-              enabledBorder: UnderlineInputBorder(
+            decoration: InputDecoration(
+              enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.transparent)
               ),
               errorBorder: InputBorder.none,
-              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: -4),
-              errorStyle: TextStyle(
+              contentPadding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  bottom: 0,
+                  top: textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
+              errorStyle: const TextStyle(
                 shadows: [
                   Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
                 ],
