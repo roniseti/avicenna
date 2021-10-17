@@ -25,15 +25,15 @@ class ErrorPage extends StatelessWidget{
         SizedBox(height: 48, width: MediaQuery.of(context).size.width),
         Text(message,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             height: 1.5,
             color: av.Colors.thirdBlack,
             fontSize: 20,
             fontWeight: FontWeight.w600,
           )
         ),
-        SizedBox(height: 72),
-        action ?? SizedBox()
+        const SizedBox(height: 72),
+        action ?? const SizedBox()
       ]
     );
   }

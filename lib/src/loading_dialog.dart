@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 
 /// Show CircularProgressIndicator wrapped with round Container
 class Loading extends StatelessWidget {
+  const Loading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 48,
       width: 48,
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(8),
+      decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(24))
       ),
-      child: CircularProgressIndicator(),
+      child: const CircularProgressIndicator(),
     );
   }
 }

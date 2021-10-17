@@ -5,7 +5,8 @@ import 'values.dart' as av;
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
 ///   border: InputBorder.none
 class DropDownPicker extends StatelessWidget {
-  DropDownPicker({
+  const DropDownPicker({
+    Key? key,
     required this.items,
     required this.title,
     this.hint,
@@ -15,14 +16,14 @@ class DropDownPicker extends StatelessWidget {
     this.obscureText = false,
     this.decoration,
     this.enabled = true
-  }) : super ();
+  }) : super(key: key);
 
   final List<String> items;
   final String title;
   final Widget? hint;
   final String? initialValue;
   final Function(String) onChanged;
-  final validator;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final InputDecoration? decoration;
   final bool enabled;
@@ -32,22 +33,22 @@ class DropDownPicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: TextStyle(
+        Text(title, style: const TextStyle(
           color: av.Colors.thirdBlack,
           fontWeight: FontWeight.w400
         )),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
           height: 44, // 51.2,
           decoration: BoxDecoration(
             color: enabled ? av.Colors.textFieldFill : av.Colors.textFieldFillDisabled,
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             // border: Border.all(width: 1.6, color: av.Colors.textFieldBorder),
           ),
           child: DropdownButtonFormField<String>(
             value: initialValue == '' ? null : initialValue,
             hint: hint,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.transparent)
               ),

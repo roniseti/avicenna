@@ -41,37 +41,37 @@ class Props {
 
   static var boxShadow = [
     BoxShadow(
-      color: Color(0xFF363535).withOpacity(0.16),
+      color: const Color(0xFF363535).withOpacity(0.16),
       spreadRadius: 0,
       blurRadius: 10,
-      offset: Offset(0, 8),
+      offset: const Offset(0, 8),
     ),
   ];
 
   static var boxShadowSoft = [
     BoxShadow(
-      color: Color(0xFF363535).withOpacity(0.1),
+      color: const Color(0xFF363535).withOpacity(0.1),
       spreadRadius: 0,
       blurRadius: 4,
-      offset: Offset(0, 2),
+      offset: const Offset(0, 2),
     ),
   ];
 
   static var boxShadowVerySoft = [
     BoxShadow(
-      color: Color(0xFF363535).withOpacity(0.1),
+      color: const Color(0xFF363535).withOpacity(0.1),
       spreadRadius: 0,
       blurRadius: 2,
-      offset: Offset(0, 1),
+      offset: const Offset(0, 1),
     ),
   ];
 
   static var boxShadowInverted = [
     BoxShadow(
-      color: Color(0xFF363535).withOpacity(0.16),
+      color: const Color(0xFF363535).withOpacity(0.16),
       spreadRadius: 0,
       blurRadius: 10,
-      offset: Offset(8, 0),
+      offset: const Offset(8, 0),
     ),
   ];
 }

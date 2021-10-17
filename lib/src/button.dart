@@ -29,13 +29,13 @@ class Button extends StatelessWidget {
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
         padding: MaterialStateProperty.all(
-          EdgeInsets.only(left: 18, right: 18)
+          const EdgeInsets.only(left: 18, right: 18)
         ),
         minimumSize: MaterialStateProperty.all(
-          minimumSize ?? Size(144, 48)
+          minimumSize ?? const Size(144, 48)
         ),
         backgroundColor: MaterialStateProperty.all(disabled == true ? av.Colors.disabledButton : color ?? av.Colors.buttonPrimary),
-        shadowColor: MaterialStateProperty.all(Color(0x301A77AD)),
+        shadowColor: MaterialStateProperty.all(const Color(0x301A77AD)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),

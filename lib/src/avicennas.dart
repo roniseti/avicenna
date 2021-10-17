@@ -38,7 +38,7 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w600
       ),
@@ -61,14 +61,14 @@ class FullScreenDialog extends StatelessWidget {
     return Scaffold(
       backgroundColor: av.Colors.background,
       appBar: AppBar(
-        leading: BackButton(
+        leading: const BackButton(
           color: Colors.black
         ),
         centerTitle: true,
-        title: Text(title ,style: TextStyle(
+        title: Text(title ,style: const TextStyle(
             color: Colors.black
         )),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
         elevation: 0,
@@ -92,7 +92,7 @@ class Modal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: child ?? SizedBox(),
+      content: child ?? const SizedBox(),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -130,7 +130,7 @@ class IconButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(28),
           onTap: onTap,
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: icon
           )
         )

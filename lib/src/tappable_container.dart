@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 /// Container with tappable ability
 class TappableContainer extends StatelessWidget {
   const TappableContainer({
+    Key? key,
     required this.onTap,
     this.onLongPress,
     required this.child,
@@ -12,7 +13,7 @@ class TappableContainer extends StatelessWidget {
     this.borderRadius = 8,
     this.color = Colors.white,
     this.boxShadow
-  }) : super();
+  }) : super(key: key);
 
   final void Function()? onTap;
   final void Function()? onLongPress;

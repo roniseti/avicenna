@@ -11,7 +11,8 @@ enum TextFieldStyle {
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
 ///   border: InputBorder.none
 class TextField extends StatelessWidget {
-  TextField({
+  const TextField({
+    Key? key,
     this.title,
     this.initialValue,
     this.onChanged,
@@ -27,14 +28,14 @@ class TextField extends StatelessWidget {
     this.helperText,
     this.hintText,
     this.textFieldStyle = TextFieldStyle.filled
-  }) : super ();
+  }) : super(key: key);
 
   final String? title;
   final String? initialValue;
   final Function(String)? onChanged;
   final Function(String?)? onSaved;
   final Function()? onEditingComplete;
-  final validator;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final InputDecoration? decoration;
   final TextInputType? keyboardType;
@@ -50,10 +51,10 @@ class TextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        title != null ? Text(title!, style: TextStyle(
+        title != null ? Text(title!, style: const TextStyle(
             color: av.Colors.thirdBlack,
             fontWeight: FontWeight.w400
-        )) : SizedBox(height: 0),
+        )) : const SizedBox(height: 0),
         SizedBox(height: title != null ? 8 : 0),
         Container(
             height: 44,// 51.2,
@@ -61,7 +62,7 @@ class TextField extends StatelessWidget {
               color: enabled
                   ? textFieldStyle == TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
                   : av.Colors.textFieldFillDisabled,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
               border: textFieldStyle == TextFieldStyle.filled
                   ? null
                   : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
@@ -79,7 +80,7 @@ class TextField extends StatelessWidget {
               decoration: decoration ?? InputDecoration(
                 contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
                 border: InputBorder.none,
-                errorStyle: TextStyle(
+                errorStyle: const TextStyle(
                     shadows: [
                       Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
                     ],
@@ -87,7 +88,7 @@ class TextField extends StatelessWidget {
                 ),
                 hintText: hintText,
                 helperText: helperText,
-                helperStyle: TextStyle(
+                helperStyle: const TextStyle(
                     shadows: [
                       Shadow(offset: Offset(0, 18))
                     ],
@@ -105,7 +106,8 @@ class TextField extends StatelessWidget {
 }
 
 class PasswordField extends StatefulWidget {
-  PasswordField({
+  const PasswordField({
+    Key? key,
     required this.title,
     this.initialValue,
     this.onChanged,
@@ -120,14 +122,14 @@ class PasswordField extends StatefulWidget {
     this.maxLength,
     this.helperText,
     this.textFieldStyle = TextFieldStyle.filled,
-  }) : super ();
+  }) : super(key: key);
 
   final String title;
   final String? initialValue;
   final Function(String)? onChanged;
   final Function(String?)? onSaved;
   final Function()? onEditingComplete;
-  final validator;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final InputDecoration? decoration;
   final TextInputType? keyboardType;
@@ -155,11 +157,11 @@ class _PasswordFieldState extends State<PasswordField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.title, style: TextStyle(
+        Text(widget.title, style: const TextStyle(
             color: av.Colors.thirdBlack,
             fontWeight: FontWeight.w400
         )),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
           height: 44,//51.2,
           // padding: EdgeInsets.only(top: 20),
@@ -167,7 +169,7 @@ class _PasswordFieldState extends State<PasswordField> {
             color: widget.enabled
                 ? widget.textFieldStyle == TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
                 : av.Colors.textFieldFillDisabled,
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: widget.textFieldStyle == TextFieldStyle.filled
                 ? null
                 : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
@@ -176,7 +178,7 @@ class _PasswordFieldState extends State<PasswordField> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                   width: MediaQuery.of(context).size.width * 0.6,
                   child: TextFormField(
                     onEditingComplete: widget.onEditingComplete,
@@ -197,14 +199,14 @@ class _PasswordFieldState extends State<PasswordField> {
                       //     child: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: av.Colors.thirdBlack),
                       //   ),
                       // ),
-                      errorStyle: TextStyle(
+                      errorStyle: const TextStyle(
                           shadows: [
                             Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
                           ],
                           color: Colors.transparent
                       ),
                       helperText: widget.helperText,
-                      helperStyle: TextStyle(
+                      helperStyle: const TextStyle(
                           shadows: [
                             Shadow(offset: Offset(0, 18))
                           ],
@@ -217,7 +219,7 @@ class _PasswordFieldState extends State<PasswordField> {
                   )
               ),
               IconButton(
-                padding: EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.only(right: 12),
                 onPressed: _passwordIconChange,
                 icon: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: av.Colors.thirdBlack),
               )

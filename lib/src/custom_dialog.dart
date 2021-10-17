@@ -25,14 +25,14 @@ class CustomDialog extends StatelessWidget {
     return AlertDialog(
       title: Column(
         children: [
-          image ?? SizedBox(height: 12),
-          Text(title ?? '', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+          image ?? const SizedBox(height: 12),
+          Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
           SizedBox(height: info != null ? 18 : 0),
-          Text(info ?? '', style: TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
+          Text(info ?? '', style: const TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
           SizedBox(height: content == null ? 12 : 0)
         ],
       ),
-      insetPadding: insetPadding ?? EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
       content: content,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius),
@@ -50,41 +50,39 @@ class CustomDialog extends StatelessWidget {
       // ] : [],
       actions: actions != null ? actions!.length > 4 ?
       [
-      Container(
-        child: Column(
-          children: [
-            Container(
-              height: 180,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    for (var i = 0; i < actions!.length -1 ; i++)
-                      modalAction(
-                        actions![i].text,
-                        actions![i].child,
-                        actions![i].onPressed,
-                        MediaQuery.of(context).size.width,
-                        radius,
-                        i == actions!.length - 1,
-                        actions![i].isDestructive,
-                        actions![i].withTopBorder
-                      )
-                  ],
-                )
+      Column(
+        children: [
+          SizedBox(
+            height: 180,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  for (var i = 0; i < actions!.length -1 ; i++)
+                    modalAction(
+                      actions![i].text,
+                      actions![i].child,
+                      actions![i].onPressed,
+                      MediaQuery.of(context).size.width,
+                      radius,
+                      i == actions!.length - 1,
+                      actions![i].isDestructive,
+                      actions![i].withTopBorder
+                    )
+                ],
               )
-            ),
-            modalAction(
-              actions![actions!.length -1].text,
-              actions![actions!.length -1].child,
-              actions![actions!.length -1].onPressed,
-              MediaQuery.of(context).size.width,
-              radius,
-              actions!.length -1 == actions!.length - 1,
-              actions![actions!.length -1].isDestructive,
-              actions![actions!.length -1].withTopBorder
             )
-          ],
-        )
+          ),
+          modalAction(
+            actions![actions!.length -1].text,
+            actions![actions!.length -1].child,
+            actions![actions!.length -1].onPressed,
+            MediaQuery.of(context).size.width,
+            radius,
+            actions!.length -1 == actions!.length - 1,
+            actions![actions!.length -1].isDestructive,
+            actions![actions!.length -1].withTopBorder
+          )
+        ],
       )
       // for (var i = 0; i < actions!.length; i++)
       //   modalAction(
@@ -108,7 +106,7 @@ class CustomDialog extends StatelessWidget {
             actions![i].withTopBorder
           )
       ] : [],
-      buttonPadding: EdgeInsets.all(0),
+      buttonPadding: const EdgeInsets.all(0),
     );
   }
 
@@ -134,7 +132,7 @@ class CustomDialog extends StatelessWidget {
                   )
                 )
               ),
-              padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
+              padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
               child: Center(
                 child: child ?? Text(text,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? av.Colors.danger : Colors.black)
@@ -199,7 +197,7 @@ class DoubleDialog extends StatelessWidget {
       //     SizedBox(height: content == null ? 12 : 0)
       //   ],
       // ),
-      insetPadding: insetPadding ?? EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
       content: content,
       // contentPadding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
@@ -276,59 +274,57 @@ class DoubleDialog extends StatelessWidget {
       //         actions![i].withTopBorder
       //     )
       // ] : [],
-      buttonPadding: EdgeInsets.all(0),
+      buttonPadding: const EdgeInsets.all(0),
     ),
     AlertDialog(
       title: Column(
         children: [
-          image ?? SizedBox(height: 12),
-          Text(title ?? '', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+          image ?? const SizedBox(height: 12),
+          Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
           SizedBox(height: info != null ? 18 : 0),
-          Text(info ?? '', style: TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
+          Text(info ?? '', style: const TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
           SizedBox(height: content == null ? 12 : 0)
         ],
       ),
-      insetPadding: insetPadding ?? EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
       // content: content,
       contentPadding: EdgeInsets.zero,
       content: //actions != null ? actions!.length > 4 ?
       IntrinsicHeight(child:
-        Container(
-            child: Column(
-              children: [
-                Container(
-                    height: 190,
-                    child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            for (var i = 0; i < actions!.length; i++)
-                              modalAction(
-                                  actions![i].text,
-                                  actions![i].child,
-                                  actions![i].onPressed,
-                                  MediaQuery.of(context).size.width /3,
-                                  radius,
-                                  i == 0,
-                                  i == actions!.length - 1,
-                                  actions![i].isDestructive,
-                                  actions![i].withTopBorder
-                              )
-                          ],
-                        )
+        Column(
+          children: [
+            SizedBox(
+                height: 190,
+                child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < actions!.length; i++)
+                          modalAction(
+                              actions![i].text,
+                              actions![i].child,
+                              actions![i].onPressed,
+                              MediaQuery.of(context).size.width /3,
+                              radius,
+                              i == 0,
+                              i == actions!.length - 1,
+                              actions![i].isDestructive,
+                              actions![i].withTopBorder
+                          )
+                      ],
                     )
-                ),
-                // modalAction(
-                //     actions![actions!.length -1].text,
-                //     actions![actions!.length -1].child,
-                //     actions![actions!.length -1].onPressed,
-                //     MediaQuery.of(context).size.width /3,
-                //     radius,
-                //     actions!.length -1 == actions!.length - 1,
-                //     actions![actions!.length -1].isDestructive,
-                //     actions![actions!.length -1].withTopBorder
-                // )
-              ],
-            )
+                )
+            ),
+            // modalAction(
+            //     actions![actions!.length -1].text,
+            //     actions![actions!.length -1].child,
+            //     actions![actions!.length -1].onPressed,
+            //     MediaQuery.of(context).size.width /3,
+            //     radius,
+            //     actions!.length -1 == actions!.length - 1,
+            //     actions![actions!.length -1].isDestructive,
+            //     actions![actions!.length -1].withTopBorder
+            // )
+          ],
         )
         // for (var i = 0; i < actions!.length; i++)
         //   modalAction(
@@ -387,7 +383,7 @@ class DoubleDialog extends StatelessWidget {
                           )
                       )
                   ),
-                  padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
+                  padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
                   child: Center(
                       child: child ?? Text(text,
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? av.Colors.danger : Colors.black)

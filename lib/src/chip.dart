@@ -22,13 +22,13 @@ class Chip extends StatelessWidget {
         elevation: MaterialStateProperty.all(0),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         padding: MaterialStateProperty.all(
-          EdgeInsets.only(left: 12, right: 12)
+          const EdgeInsets.only(left: 12, right: 12)
         ),
         minimumSize: MaterialStateProperty.all(
-          Size(28, 28)
+          const Size(28, 28)
         ),
         backgroundColor: MaterialStateProperty.all(color ?? av.Colors.label),
-        shadowColor: MaterialStateProperty.all(Color(0x301A77AD)),
+        shadowColor: MaterialStateProperty.all(const Color(0x301A77AD)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),

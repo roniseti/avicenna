@@ -23,7 +23,7 @@ class RoundedContainer extends StatelessWidget {
       width: width ?? MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: color ?? Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         // boxShadow: [
         //   BoxShadow(
         //     color: Colors.shadow,
@@ -33,8 +33,8 @@ class RoundedContainer extends StatelessWidget {
         //   ),
         // ],
       ),
-      margin: margin ?? EdgeInsets.all(12),
-      padding: padding ?? EdgeInsets.only(left: 24, top: 36, right: 24, bottom: 36),
+      margin: margin ?? const EdgeInsets.all(12),
+      padding: padding ?? const EdgeInsets.only(left: 24, top: 36, right: 24, bottom: 36),
       child: child,
     );
   }
