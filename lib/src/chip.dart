@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'values.dart' as av;
 
-class Chip extends StatelessWidget {
-  const Chip({
+/// Actually there's already material chip
+class AvicennaChip extends StatelessWidget {
+  const AvicennaChip({
     Key? key,
     this.text,
     this.onPressed,

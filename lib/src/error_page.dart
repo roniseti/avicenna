@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'values.dart' as av;
 
 /// error page
-class ErrorPage extends StatelessWidget{
-  const ErrorPage({
+class AvicennaErrorPage extends StatelessWidget{
+  const AvicennaErrorPage({
     Key? key,
     required this.message,
     this.assetPath = 'assets/images/empty.png',

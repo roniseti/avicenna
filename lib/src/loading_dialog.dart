@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 
 /// Show CircularProgressIndicator wrapped with round Container
-class Loading extends StatelessWidget {
-  const Loading({Key? key}) : super(key: key);
+class AvicennaLoading extends StatelessWidget {
+  const AvicennaLoading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +12,8 @@ class Loading extends StatelessWidget {
       width: 48,
       padding: const EdgeInsets.all(8),
       decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(24))
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(24))
       ),
       child: const CircularProgressIndicator(),
     );
@@ -21,8 +21,8 @@ class Loading extends StatelessWidget {
 }
 
 /// Show CircularProgressIndicator wrapped with round Container as a Dialog
-class LoadingDialog extends StatelessWidget {
-  const LoadingDialog({Key? key}) : super(key: key);
+class AvicennaLoadingDialog extends StatelessWidget {
+  const AvicennaLoadingDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class LoadingDialog extends StatelessWidget {
       elevation: 0,
       insetPadding: EdgeInsets.all(MediaQuery.of(context).size.width / 2 - 24),
       contentPadding: const EdgeInsets.all(0),
-      content: const Loading(),
+      content: const AvicennaLoading(),
       // Container(
       //   height: 48,
       //   width: 48,

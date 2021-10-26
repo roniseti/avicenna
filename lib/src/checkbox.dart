@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'values.dart' as av;
 
-class CheckBox extends StatelessWidget {
-  const CheckBox({
+class AvicennaCheckBox extends StatelessWidget {
+  const AvicennaCheckBox({
     Key? key,
     required this.onChanged,
     required this.value,

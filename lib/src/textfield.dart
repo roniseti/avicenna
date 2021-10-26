@@ -6,8 +6,8 @@ import 'values.dart' as av;
 /// if using the decoration, please add this
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
 ///   border: InputBorder.none
-class TextField extends StatelessWidget {
-  const TextField({
+class AvicennaTextField extends StatelessWidget {
+  const AvicennaTextField({
     Key? key,
     this.title,
     this.initialValue,
@@ -53,56 +53,56 @@ class TextField extends StatelessWidget {
         )) : const SizedBox(height: 0),
         SizedBox(height: title != null ? 8 : 0),
         Container(
-            height: 44,// 51.2,
-            decoration: BoxDecoration(
-              color: enabled
-                  ? textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
-                  : av.Colors.textFieldFillDisabled,
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
-              border: textFieldStyle == av.TextFieldStyle.filled
-                  ? null
-                  : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
-              // boxShadow: av.Props.boxShadowVerySoft
-            ),
-            child: TextFormField(
-              onEditingComplete: onEditingComplete,
-              enabled: enabled,
-              inputFormatters: inputFormatters,
-              keyboardType: keyboardType,
-              obscureText: obscureText,
-              initialValue: initialValue,
-              maxLength: maxLength,
-              style: TextStyle(color: enabled ? av.Colors.black : av.Colors.thirdBlack),
-              decoration: decoration ?? InputDecoration(
-                contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
-                border: InputBorder.none,
-                errorStyle: const TextStyle(
-                    shadows: [
-                      Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
-                    ],
-                    color: Colors.transparent
-                ),
-                hintText: hintText,
-                helperText: helperText,
-                helperStyle: const TextStyle(
-                    shadows: [
-                      Shadow(offset: Offset(0, 18))
-                    ],
-                    color: Colors.transparent
-                ),
+          height: 44,// 51.2,
+          decoration: BoxDecoration(
+            color: enabled
+                ? textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
+                : av.Colors.textFieldFillDisabled,
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            border: textFieldStyle == av.TextFieldStyle.filled
+                ? null
+                : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
+            // boxShadow: av.Props.boxShadowVerySoft
+          ),
+          child: TextFormField(
+            onEditingComplete: onEditingComplete,
+            enabled: enabled,
+            inputFormatters: inputFormatters,
+            keyboardType: keyboardType,
+            obscureText: obscureText,
+            initialValue: initialValue,
+            maxLength: maxLength,
+            style: TextStyle(color: enabled ? av.Colors.black : av.Colors.thirdBlack),
+            decoration: decoration ?? InputDecoration(
+              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
+              border: InputBorder.none,
+              errorStyle: const TextStyle(
+                shadows: [
+                  Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
+                ],
+                color: Colors.transparent
               ),
-              validator: validator,
-              onChanged: onChanged,
-              onSaved: onSaved,
-            )
+              hintText: hintText,
+              helperText: helperText,
+              helperStyle: const TextStyle(
+                shadows: [
+                  Shadow(offset: Offset(0, 18))
+                ],
+                color: Colors.transparent
+              ),
+            ),
+            validator: validator,
+            onChanged: onChanged,
+            onSaved: onSaved,
+          )
         ),
       ],
     );
   }
 }
 
-class PasswordField extends StatefulWidget {
-  const PasswordField({
+class AvicennaPasswordField extends StatefulWidget {
+  const AvicennaPasswordField({
     Key? key,
     required this.title,
     this.initialValue,
@@ -136,10 +136,10 @@ class PasswordField extends StatefulWidget {
   final av.TextFieldStyle textFieldStyle;
 
   @override
-  _PasswordFieldState createState() => _PasswordFieldState();
+  _AvicennaPasswordFieldState createState() => _AvicennaPasswordFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
+class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
   bool _passwordState = true;
 
   void _passwordIconChange() {
@@ -175,44 +175,44 @@ class _PasswordFieldState extends State<PasswordField> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  child: TextFormField(
-                    onEditingComplete: widget.onEditingComplete,
-                    enabled: widget.enabled,
-                    inputFormatters: widget.inputFormatters,
-                    keyboardType: widget.keyboardType,
-                    obscureText: _passwordState,
-                    initialValue: widget.initialValue,
-                    maxLength: widget.maxLength,
-                    style: TextStyle(color: widget.enabled ? av.Colors.black : av.Colors.thirdBlack),
-                    decoration: widget.decoration ?? InputDecoration(
-                      contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
-                      border: InputBorder.none,
-                      // suffixIcon: Padding(
-                      //   padding: EdgeInsetsDirectional.only(end: 12.0),
-                      //   child: GestureDetector(
-                      //     onTap: _passwordIconChange,
-                      //     child: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: av.Colors.thirdBlack),
-                      //   ),
-                      // ),
-                      errorStyle: const TextStyle(
-                          shadows: [
-                            Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
-                          ],
-                          color: Colors.transparent
-                      ),
-                      helperText: widget.helperText,
-                      helperStyle: const TextStyle(
-                          shadows: [
-                            Shadow(offset: Offset(0, 18))
-                          ],
-                          color: Colors.transparent
-                      ),
+                width: MediaQuery.of(context).size.width * 0.6,
+                child: TextFormField(
+                  onEditingComplete: widget.onEditingComplete,
+                  enabled: widget.enabled,
+                  inputFormatters: widget.inputFormatters,
+                  keyboardType: widget.keyboardType,
+                  obscureText: _passwordState,
+                  initialValue: widget.initialValue,
+                  maxLength: widget.maxLength,
+                  style: TextStyle(color: widget.enabled ? av.Colors.black : av.Colors.thirdBlack),
+                  decoration: widget.decoration ?? InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
+                    border: InputBorder.none,
+                    // suffixIcon: Padding(
+                    //   padding: EdgeInsetsDirectional.only(end: 12.0),
+                    //   child: GestureDetector(
+                    //     onTap: _passwordIconChange,
+                    //     child: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: av.Colors.thirdBlack),
+                    //   ),
+                    // ),
+                    errorStyle: const TextStyle(
+                        shadows: [
+                          Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
+                        ],
+                        color: Colors.transparent
                     ),
-                    validator: widget.validator,
-                    onChanged: widget.onChanged,
-                    onSaved: widget.onSaved,
-                  )
+                    helperText: widget.helperText,
+                    helperStyle: const TextStyle(
+                        shadows: [
+                          Shadow(offset: Offset(0, 18))
+                        ],
+                        color: Colors.transparent
+                    ),
+                  ),
+                  validator: widget.validator,
+                  onChanged: widget.onChanged,
+                  onSaved: widget.onSaved,
+                )
               ),
               IconButton(
                 padding: const EdgeInsets.only(right: 12),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'values.dart' as av;
 
-class Button extends StatelessWidget {
-  const Button({
+class AvicennaButton extends StatelessWidget {
+  const AvicennaButton({
     Key? key,
     required this.onPressed,
     this.onLongPress,

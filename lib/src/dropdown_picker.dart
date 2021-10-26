@@ -4,8 +4,8 @@ import 'values.dart' as av;
 /// if using the decoration, please add this
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
 ///   border: InputBorder.none
-class DropDownPicker extends StatelessWidget {
-  const DropDownPicker({
+class AvicennaDropDownPicker extends StatelessWidget {
+  const AvicennaDropDownPicker({
     Key? key,
     required this.items,
     required this.title,

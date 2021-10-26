@@ -27,9 +27,9 @@ class ListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (_listStatus) {
       case ListStatus.init:
-        return const Center(child: Loading());
+        return const Center(child: AvicennaLoading());
       case ListStatus.empty:
-        return ErrorPage(
+        return AvicennaErrorPage(
           message: 'No profile yet!\nclick the buttons below to create or import profile',
           assetPath: 'assets/images/empty.png',
           imageWidth: 0.8,
@@ -40,7 +40,7 @@ class ListPage extends StatelessWidget {
           )
         );
       case ListStatus.error:
-        return ErrorPage(
+        return AvicennaErrorPage(
           message: 'Error',
           assetPath: 'assets/images/empty.png',
           imageWidth: 0.8,

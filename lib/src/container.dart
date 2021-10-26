@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Container with tappable ability
-class TappableContainer extends StatelessWidget {
-  const TappableContainer({
+class AvicennaContainer extends StatelessWidget {
+  const AvicennaContainer({
     Key? key,
     required this.onTap,
     this.onLongPress,

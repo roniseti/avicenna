@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'values.dart' as av;
 
-class CustomDialog extends StatelessWidget {
-  const CustomDialog({
+class AvicennaDialog extends StatelessWidget {
+  const AvicennaDialog({
     Key? key,
     this.image,
     this.title,
@@ -16,7 +16,7 @@ class CustomDialog extends StatelessWidget {
   final String? title;
   final String? info;
   final Widget? content;
-  final List<ModalActionItem>? actions;
+  final List<AvicennaDialogActionItem>? actions;
   final EdgeInsets? insetPadding;
 
   @override
@@ -147,8 +147,8 @@ class CustomDialog extends StatelessWidget {
 
 }
 
-class ModalActionItem {
-  ModalActionItem({
+class AvicennaDialogActionItem {
+  const AvicennaDialogActionItem({
     required this.text,
     this.child,
     this.isDestructive = false,
@@ -179,7 +179,7 @@ class DoubleDialog extends StatelessWidget {
   final String? title;
   final String? info;
   final Widget? content;
-  final List<ModalActionItem>? actions;
+  final List<AvicennaDialogActionItem>? actions;
   final EdgeInsets? insetPadding;
 
   @override
