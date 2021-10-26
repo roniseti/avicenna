@@ -77,6 +77,7 @@ class AvicennaFullScreenDialog extends StatelessWidget {
       body: content
     );
   }
+
 }
 
 class Modal extends StatelessWidget {
@@ -100,6 +101,7 @@ class Modal extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
     );
   }
+
 }
 
 /// round Button with Icon only

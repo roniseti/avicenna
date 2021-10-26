@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'values.dart' as av;
 
 class AvicennaCheckBox extends StatelessWidget {
   const AvicennaCheckBox({
@@ -66,4 +65,5 @@ class AvicennaCheckBox extends StatelessWidget {
       )
     );
   }
+
 }

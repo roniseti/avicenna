@@ -60,10 +60,10 @@ class AvicennaDropDownPicker extends StatelessWidget {
               ),
               errorBorder: InputBorder.none,
               contentPadding: EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                  bottom: 0,
-                  top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
+                left: 16,
+                right: 16,
+                bottom: 0,
+                top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
               errorStyle: const TextStyle(
                 shadows: [
                   Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
@@ -84,4 +84,5 @@ class AvicennaDropDownPicker extends StatelessWidget {
       ],
     );
   }
+
 }

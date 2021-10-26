@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 /// Show CircularProgressIndicator wrapped with round Container
 class AvicennaLoading extends StatelessWidget {
   const AvicennaLoading({Key? key}) : super(key: key);
@@ -18,6 +17,7 @@ class AvicennaLoading extends StatelessWidget {
       child: const CircularProgressIndicator(),
     );
   }
+
 }
 
 /// Show CircularProgressIndicator wrapped with round Container as a Dialog
@@ -31,19 +31,10 @@ class AvicennaLoadingDialog extends StatelessWidget {
       insetPadding: EdgeInsets.all(MediaQuery.of(context).size.width / 2 - 24),
       contentPadding: const EdgeInsets.all(0),
       content: const AvicennaLoading(),
-      // Container(
-      //   height: 48,
-      //   width: 48,
-      //   padding: EdgeInsets.all(8),
-      //   decoration: BoxDecoration(
-      //       color: Colors.white,
-      //       borderRadius: BorderRadius.all(Radius.circular(24))
-      //   ),
-      //   child: CircularProgressIndicator(),
-      // ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
     );
   }
+
 }

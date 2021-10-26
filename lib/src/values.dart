@@ -40,8 +40,8 @@ class AvicennaColors {
   static const Color textFieldFillDisabled = Color(0xFFD1D1D1);
 }
 
-class Props {
-  Props._();
+class AvicennaProps {
+  AvicennaProps._();
 
   static var boxShadow = [
     BoxShadow(
