@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'values.dart' as av;
+import 'values.dart';
 
 /// if using the decoration, please add this
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
@@ -23,7 +23,7 @@ class AvicennaTextField extends StatelessWidget {
     this.maxLength,
     this.helperText,
     this.hintText,
-    this.textFieldStyle = av.TextFieldStyle.filled
+    this.textFieldStyle = TextFieldStyle.filled
   }) : super(key: key);
 
   final String? title;
@@ -40,7 +40,7 @@ class AvicennaTextField extends StatelessWidget {
   final int? maxLength;
   final String? helperText;
   final String? hintText;
-  final av.TextFieldStyle textFieldStyle;
+  final TextFieldStyle textFieldStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class AvicennaTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         title != null ? Text(title!, style: const TextStyle(
-            color: av.Colors.thirdBlack,
+            color: AvicennaColors.thirdBlack,
             fontWeight: FontWeight.w400
         )) : const SizedBox(height: 0),
         SizedBox(height: title != null ? 8 : 0),
@@ -56,12 +56,12 @@ class AvicennaTextField extends StatelessWidget {
           height: 44,// 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
-                : av.Colors.textFieldFillDisabled,
+                ? textFieldStyle == TextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: textFieldStyle == av.TextFieldStyle.filled
+            border: textFieldStyle == TextFieldStyle.filled
                 ? null
-                : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
+                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: TextFormField(
@@ -72,13 +72,13 @@ class AvicennaTextField extends StatelessWidget {
             obscureText: obscureText,
             initialValue: initialValue,
             maxLength: maxLength,
-            style: TextStyle(color: enabled ? av.Colors.black : av.Colors.thirdBlack),
+            style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
             decoration: decoration ?? InputDecoration(
-              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
+              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
               border: InputBorder.none,
               errorStyle: const TextStyle(
                 shadows: [
-                  Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
+                  Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
                 ],
                 color: Colors.transparent
               ),
@@ -117,7 +117,7 @@ class AvicennaPasswordField extends StatefulWidget {
     this.enabled = true,
     this.maxLength,
     this.helperText,
-    this.textFieldStyle = av.TextFieldStyle.filled,
+    this.textFieldStyle = TextFieldStyle.filled,
   }) : super(key: key);
 
   final String title;
@@ -133,7 +133,7 @@ class AvicennaPasswordField extends StatefulWidget {
   final bool enabled;
   final int? maxLength;
   final String? helperText;
-  final av.TextFieldStyle textFieldStyle;
+  final TextFieldStyle textFieldStyle;
 
   @override
   _AvicennaPasswordFieldState createState() => _AvicennaPasswordFieldState();
@@ -154,7 +154,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(widget.title, style: const TextStyle(
-            color: av.Colors.thirdBlack,
+            color: AvicennaColors.thirdBlack,
             fontWeight: FontWeight.w400
         )),
         const SizedBox(height: 8),
@@ -163,12 +163,12 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             color: widget.enabled
-                ? widget.textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
-                : av.Colors.textFieldFillDisabled,
+                ? widget.textFieldStyle == TextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: widget.textFieldStyle == av.TextFieldStyle.filled
+            border: widget.textFieldStyle == TextFieldStyle.filled
                 ? null
-                : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
+                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: Row(
@@ -184,20 +184,20 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                   obscureText: _passwordState,
                   initialValue: widget.initialValue,
                   maxLength: widget.maxLength,
-                  style: TextStyle(color: widget.enabled ? av.Colors.black : av.Colors.thirdBlack),
+                  style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
                   decoration: widget.decoration ?? InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
+                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
                     border: InputBorder.none,
                     // suffixIcon: Padding(
                     //   padding: EdgeInsetsDirectional.only(end: 12.0),
                     //   child: GestureDetector(
                     //     onTap: _passwordIconChange,
-                    //     child: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: av.Colors.thirdBlack),
+                    //     child: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: AvicennaColors.thirdBlack),
                     //   ),
                     // ),
                     errorStyle: const TextStyle(
                         shadows: [
-                          Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
+                          Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
                         ],
                         color: Colors.transparent
                     ),
@@ -217,7 +217,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
               IconButton(
                 padding: const EdgeInsets.only(right: 12),
                 onPressed: _passwordIconChange,
-                icon: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: av.Colors.thirdBlack),
+                icon: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: AvicennaColors.thirdBlack),
               )
             ],
           ),

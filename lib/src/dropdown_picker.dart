@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 
 /// if using the decoration, please add this
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
@@ -16,7 +16,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
     this.obscureText = false,
     this.decoration,
     this.enabled = true,
-    this.textFieldStyle = av.TextFieldStyle.filled
+    this.textFieldStyle = TextFieldStyle.filled
   }) : super(key: key);
 
   final List<String> items;
@@ -28,7 +28,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   final bool obscureText;
   final InputDecoration? decoration;
   final bool enabled;
-  final av.TextFieldStyle textFieldStyle;
+  final TextFieldStyle textFieldStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title, style: const TextStyle(
-          color: av.Colors.thirdBlack,
+          color: AvicennaColors.thirdBlack,
           fontWeight: FontWeight.w400
         )),
         const SizedBox(height: 8),
@@ -44,12 +44,12 @@ class AvicennaDropDownPicker extends StatelessWidget {
           height: 44, // 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == av.TextFieldStyle.filled ? av.Colors.textFieldFill : av.Colors.white
-                : av.Colors.textFieldFillDisabled,
+                ? textFieldStyle == TextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: textFieldStyle == av.TextFieldStyle.filled
+            border: textFieldStyle == TextFieldStyle.filled
                 ? null
-                : Border.all(width: 1.6, color: av.Colors.textFieldBorder),
+                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
           child: DropdownButtonFormField<String>(
             value: initialValue == '' ? null : initialValue,
@@ -63,10 +63,10 @@ class AvicennaDropDownPicker extends StatelessWidget {
                   left: 16,
                   right: 16,
                   bottom: 0,
-                  top: textFieldStyle == av.TextFieldStyle.filled ? -4 : -5.6),
+                  top: textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
               errorStyle: const TextStyle(
                 shadows: [
-                  Shadow(color: av.Colors.danger, offset: Offset(-6, 18))
+                  Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
                 ],
                 color: Colors.transparent
               )

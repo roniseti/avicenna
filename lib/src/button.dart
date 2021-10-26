@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 
 class AvicennaButton extends StatelessWidget {
   const AvicennaButton({
@@ -34,7 +34,7 @@ class AvicennaButton extends StatelessWidget {
         minimumSize: MaterialStateProperty.all(
           minimumSize ?? const Size(144, 48)
         ),
-        backgroundColor: MaterialStateProperty.all(disabled == true ? av.Colors.disabledButton : color ?? av.Colors.buttonPrimary),
+        backgroundColor: MaterialStateProperty.all(disabled == true ? AvicennaColors.disabledButton : color ?? AvicennaColors.buttonPrimary),
         shadowColor: MaterialStateProperty.all(const Color(0x301A77AD)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -44,7 +44,7 @@ class AvicennaButton extends StatelessWidget {
         )
       ),
       child: Text(text!, style: TextStyle(
-        color: textColor ?? av.Colors.white,
+        color: textColor ?? AvicennaColors.white,
         fontSize: 16
       )),
     );

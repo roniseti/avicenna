@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 
 class AvicennaDialog extends StatelessWidget {
   const AvicennaDialog({
@@ -28,7 +28,7 @@ class AvicennaDialog extends StatelessWidget {
           image ?? const SizedBox(height: 12),
           Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
           SizedBox(height: info != null ? 18 : 0),
-          Text(info ?? '', style: const TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
+          Text(info ?? '', style: const TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
           SizedBox(height: content == null ? 12 : 0)
         ],
       ),
@@ -127,7 +127,7 @@ class AvicennaDialog extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: withTopBorder ? av.Colors.disabledButton : Colors.transparent,
+                    color: withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
                     width: withTopBorder ? 1 : 0
                   )
                 )
@@ -135,7 +135,7 @@ class AvicennaDialog extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
               child: Center(
                 child: child ?? Text(text,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? av.Colors.danger : Colors.black)
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? AvicennaColors.danger : Colors.black)
                 )
               )
             ),
@@ -193,7 +193,7 @@ class DoubleDialog extends StatelessWidget {
       //     image ?? SizedBox(height: 12),
       //     Text(title ?? '', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
       //     SizedBox(height: info != null ? 18 : 0),
-      //     Text(info ?? '', style: TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
+      //     Text(info ?? '', style: TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
       //     SizedBox(height: content == null ? 12 : 0)
       //   ],
       // ),
@@ -282,7 +282,7 @@ class DoubleDialog extends StatelessWidget {
           image ?? const SizedBox(height: 12),
           Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
           SizedBox(height: info != null ? 18 : 0),
-          Text(info ?? '', style: const TextStyle(fontSize: 14, color: av.Colors.secondBlack), textAlign: TextAlign.center),
+          Text(info ?? '', style: const TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
           SizedBox(height: content == null ? 12 : 0)
         ],
       ),
@@ -378,7 +378,7 @@ class DoubleDialog extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border(
                           top: BorderSide(
-                              color: withTopBorder ? av.Colors.disabledButton : Colors.transparent,
+                              color: withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
                               width: withTopBorder ? 1 : 0
                           )
                       )
@@ -386,7 +386,7 @@ class DoubleDialog extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
                   child: Center(
                       child: child ?? Text(text,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? av.Colors.danger : Colors.black)
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? AvicennaColors.danger : Colors.black)
                       )
                   )
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 
 /// Actually there's already material chip
 class AvicennaChip extends StatelessWidget {
@@ -28,7 +28,7 @@ class AvicennaChip extends StatelessWidget {
         minimumSize: MaterialStateProperty.all(
           const Size(28, 28)
         ),
-        backgroundColor: MaterialStateProperty.all(color ?? av.Colors.label),
+        backgroundColor: MaterialStateProperty.all(color ?? AvicennaColors.label),
         shadowColor: MaterialStateProperty.all(const Color(0x301A77AD)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -39,7 +39,7 @@ class AvicennaChip extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Text(text!, style: TextStyle(
-        color: textColor ?? av.Colors.labelText,
+        color: textColor ?? AvicennaColors.labelText,
         fontSize: 12,
         // fontStyle: FontStyle.italic
       )),

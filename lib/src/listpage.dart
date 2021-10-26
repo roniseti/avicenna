@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 import 'error_page.dart';
 import 'loading_dialog.dart';
-import 'avicennas.dart' as av;
+import 'avicennas.dart';
 
 enum ListStatus {
   init,
@@ -33,7 +33,7 @@ class ListPage extends StatelessWidget {
           message: 'No profile yet!\nclick the buttons below to create or import profile',
           assetPath: 'assets/images/empty.png',
           imageWidth: 0.8,
-          action: av.IconButton(
+          action: AvicennaIconButton(
             tooltip: 'Refresh',
             onTap: onRefresh,
             icon: const Icon(Icons.refresh),
@@ -44,7 +44,7 @@ class ListPage extends StatelessWidget {
           message: 'Error',
           assetPath: 'assets/images/empty.png',
           imageWidth: 0.8,
-          action: av.IconButton(
+          action: AvicennaIconButton(
             tooltip: 'Refresh',
             onTap: onRefresh,
             icon: const Icon(Icons.refresh),
@@ -64,7 +64,7 @@ class ListPage extends StatelessWidget {
               )
             ),
             Container(
-              color: av.Colors.background,
+              color: AvicennaColors.background,
               padding: const EdgeInsets.only(left: 18, top: 0, right: 12, bottom: 18),
               width: MediaQuery.of(context).size.width,
               child: const Text('Tap + to add new profile or tap on download icon to import profile. Tap on profile to send and hold to edit'),

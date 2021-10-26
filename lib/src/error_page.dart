@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 
 /// error page
 class AvicennaErrorPage extends StatelessWidget{
@@ -27,7 +27,7 @@ class AvicennaErrorPage extends StatelessWidget{
           textAlign: TextAlign.center,
           style: const TextStyle(
             height: 1.5,
-            color: av.Colors.thirdBlack,
+            color: AvicennaColors.thirdBlack,
             fontSize: 20,
             fontWeight: FontWeight.w600,
           )

@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui' show Color;
 
 import 'package:flutter/material.dart';
-import 'values.dart' as av;
+import 'values.dart';
 
 /// converting String or number to comma separated String value
 String moneyFormat(dynamic intPrice) {
@@ -59,7 +59,7 @@ class FullScreenDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: av.Colors.background,
+      backgroundColor: AvicennaColors.background,
       appBar: AppBar(
         leading: const BackButton(
           color: Colors.black
@@ -103,8 +103,8 @@ class Modal extends StatelessWidget {
 }
 
 /// round Button with Icon only
-class IconButton extends StatelessWidget {
-  const IconButton({
+class AvicennaIconButton extends StatelessWidget {
+  const AvicennaIconButton({
     Key? key,
     required this.onTap,
     this.tooltip = 'Close',
