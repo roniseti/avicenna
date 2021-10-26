@@ -46,8 +46,8 @@ class TitleText extends StatelessWidget {
   }
 }
 
-class FullScreenDialog extends StatelessWidget {
-  const FullScreenDialog({
+class AvicennaFullScreenDialog extends StatelessWidget {
+  const AvicennaFullScreenDialog({
     Key? key,
     required this.title,
     required this.content

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum TextFieldStyle {
+enum AvicennaTextFieldStyle {
   filled, border
 }
 

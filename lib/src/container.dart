@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AvicennaContainer extends StatelessWidget {
   const AvicennaContainer({
     Key? key,
-    required this.onTap,
+    this.onTap,
     this.onLongPress,
     required this.child,
     this.width,

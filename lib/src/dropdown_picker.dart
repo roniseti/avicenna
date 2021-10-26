@@ -16,7 +16,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
     this.obscureText = false,
     this.decoration,
     this.enabled = true,
-    this.textFieldStyle = TextFieldStyle.filled
+    this.textFieldStyle = AvicennaTextFieldStyle.filled
   }) : super(key: key);
 
   final List<String> items;
@@ -28,7 +28,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   final bool obscureText;
   final InputDecoration? decoration;
   final bool enabled;
-  final TextFieldStyle textFieldStyle;
+  final AvicennaTextFieldStyle textFieldStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +44,10 @@ class AvicennaDropDownPicker extends StatelessWidget {
           height: 44, // 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == TextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
                 : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: textFieldStyle == TextFieldStyle.filled
+            border: textFieldStyle == AvicennaTextFieldStyle.filled
                 ? null
                 : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
@@ -63,7 +63,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
                   left: 16,
                   right: 16,
                   bottom: 0,
-                  top: textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
+                  top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
               errorStyle: const TextStyle(
                 shadows: [
                   Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))

@@ -23,7 +23,7 @@ class AvicennaTextField extends StatelessWidget {
     this.maxLength,
     this.helperText,
     this.hintText,
-    this.textFieldStyle = TextFieldStyle.filled
+    this.textFieldStyle = AvicennaTextFieldStyle.filled
   }) : super(key: key);
 
   final String? title;
@@ -40,7 +40,7 @@ class AvicennaTextField extends StatelessWidget {
   final int? maxLength;
   final String? helperText;
   final String? hintText;
-  final TextFieldStyle textFieldStyle;
+  final AvicennaTextFieldStyle textFieldStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +56,10 @@ class AvicennaTextField extends StatelessWidget {
           height: 44,// 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == TextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
                 : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: textFieldStyle == TextFieldStyle.filled
+            border: textFieldStyle == AvicennaTextFieldStyle.filled
                 ? null
                 : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
@@ -74,7 +74,7 @@ class AvicennaTextField extends StatelessWidget {
             maxLength: maxLength,
             style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
             decoration: decoration ?? InputDecoration(
-              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
+              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
               border: InputBorder.none,
               errorStyle: const TextStyle(
                 shadows: [
@@ -117,7 +117,7 @@ class AvicennaPasswordField extends StatefulWidget {
     this.enabled = true,
     this.maxLength,
     this.helperText,
-    this.textFieldStyle = TextFieldStyle.filled,
+    this.textFieldStyle = AvicennaTextFieldStyle.filled,
   }) : super(key: key);
 
   final String title;
@@ -133,7 +133,7 @@ class AvicennaPasswordField extends StatefulWidget {
   final bool enabled;
   final int? maxLength;
   final String? helperText;
-  final TextFieldStyle textFieldStyle;
+  final AvicennaTextFieldStyle textFieldStyle;
 
   @override
   _AvicennaPasswordFieldState createState() => _AvicennaPasswordFieldState();
@@ -163,10 +163,10 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             color: widget.enabled
-                ? widget.textFieldStyle == TextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                ? widget.textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
                 : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            border: widget.textFieldStyle == TextFieldStyle.filled
+            border: widget.textFieldStyle == AvicennaTextFieldStyle.filled
                 ? null
                 : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
@@ -186,7 +186,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                   maxLength: widget.maxLength,
                   style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
                   decoration: widget.decoration ?? InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == TextFieldStyle.filled ? -4 : -5.6),
+                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
                     border: InputBorder.none,
                     // suffixIcon: Padding(
                     //   padding: EdgeInsetsDirectional.only(end: 12.0),
