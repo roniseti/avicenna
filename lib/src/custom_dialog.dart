@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'values.dart';
 
@@ -395,4 +397,58 @@ class DoubleDialog extends StatelessWidget {
       ),
     );
   }
+}
+
+void showAvicennaDialog({
+  required BuildContext context,
+  bool barrierDismissible = true,
+  Color? barrierColor = Colors.black26,
+  String? barrierLabel,
+  bool useSafeArea = true,
+  bool useRootNavigator = true,
+  RouteSettings? routeSettings,
+  required Widget child,
+}) {
+  showDialog(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    barrierColor: barrierColor,
+    barrierLabel: barrierLabel,
+    useSafeArea: useSafeArea,
+    useRootNavigator: useRootNavigator,
+    routeSettings: routeSettings,
+    builder: (context) {
+      return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          child: child
+      );
+    }
+  );
+}
+
+Future<void> showAvicennaDialogAsync({
+  required BuildContext context,
+  bool barrierDismissible = true,
+  Color? barrierColor = Colors.black26,
+  String? barrierLabel,
+  bool useSafeArea = true,
+  bool useRootNavigator = true,
+  RouteSettings? routeSettings,
+  required Widget child,
+}) async {
+  await showDialog(
+    context: context,
+    barrierDismissible: barrierDismissible,
+    barrierColor: barrierColor,
+    barrierLabel: barrierLabel,
+    useSafeArea: useSafeArea,
+    useRootNavigator: useRootNavigator,
+    routeSettings: routeSettings,
+    builder: (context) {
+      return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          child: child
+      );
+    }
+  );
 }

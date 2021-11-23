@@ -8,7 +8,7 @@ export 'src/error_page.dart';
 export 'src/dropdown_picker.dart';
 export 'src/loading_dialog.dart';
 export 'src/container.dart';
-export 'src/textfield.dart';
+export 'src/text_field.dart';
 export 'src/values.dart';
 
 /// A Calculator.
