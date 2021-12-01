@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui' show Color;
 
 import 'package:flutter/material.dart';
 import 'values.dart';

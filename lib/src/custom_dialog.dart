@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'values.dart';
 
@@ -402,25 +403,28 @@ class DoubleDialog extends StatelessWidget {
 void showAvicennaDialog({
   required BuildContext context,
   bool barrierDismissible = true,
-  Color? barrierColor = Colors.black26,
-  String? barrierLabel,
+  Color barrierColor = Colors.black26,
+  String barrierLabel = 'Dismiss',
   bool useSafeArea = true,
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
+  Duration transitionDuration = const Duration(milliseconds: 300),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 150)
 }) {
-  showDialog(
+  showModal(
     context: context,
-    barrierDismissible: barrierDismissible,
-    barrierColor: barrierColor,
-    barrierLabel: barrierLabel,
-    useSafeArea: useSafeArea,
-    useRootNavigator: useRootNavigator,
-    routeSettings: routeSettings,
+    configuration: FadeScaleTransitionConfiguration(
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      barrierLabel: barrierLabel,
+      transitionDuration: transitionDuration,
+      reverseTransitionDuration: reverseTransitionDuration
+    ),
     builder: (context) {
       return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-          child: child
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        child: child
       );
     }
   );
@@ -429,25 +433,28 @@ void showAvicennaDialog({
 Future<void> showAvicennaDialogAsync({
   required BuildContext context,
   bool barrierDismissible = true,
-  Color? barrierColor = Colors.black26,
-  String? barrierLabel,
+  Color barrierColor = Colors.black26,
+  String barrierLabel = 'Dismiss',
   bool useSafeArea = true,
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
+  Duration transitionDuration = const Duration(milliseconds: 300),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 150)
 }) async {
-  await showDialog(
+  await showModal(
     context: context,
-    barrierDismissible: barrierDismissible,
-    barrierColor: barrierColor,
-    barrierLabel: barrierLabel,
-    useSafeArea: useSafeArea,
-    useRootNavigator: useRootNavigator,
-    routeSettings: routeSettings,
+    configuration: FadeScaleTransitionConfiguration(
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      barrierLabel: barrierLabel,
+      transitionDuration: transitionDuration,
+      reverseTransitionDuration: reverseTransitionDuration
+    ),
     builder: (context) {
       return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-          child: child
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        child: child
       );
     }
   );
