@@ -19,7 +19,6 @@ class AvicennaCheckBox extends StatelessWidget {
   final bool value;
   final String title;
   final void Function() onTap;
-
   final double? width;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry padding;

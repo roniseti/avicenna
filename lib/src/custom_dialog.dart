@@ -12,7 +12,7 @@ class AvicennaDialog extends StatelessWidget {
     this.info,
     this.content,
     this.actions,
-    this.insetPadding,
+    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
   }) : super(key: key);
 
   final Widget? image;
@@ -20,7 +20,7 @@ class AvicennaDialog extends StatelessWidget {
   final String? info;
   final Widget? content;
   final List<AvicennaDialogActionItem>? actions;
-  final EdgeInsets? insetPadding;
+  final EdgeInsets insetPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class AvicennaDialog extends StatelessWidget {
           SizedBox(height: content == null ? 12 : 0)
         ],
       ),
-      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      insetPadding: insetPadding,
       content: content,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius),
@@ -175,7 +175,7 @@ class DoubleDialog extends StatelessWidget {
     this.info,
     this.content,
     this.actions,
-    this.insetPadding,
+    this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
   }) : super(key: key);
 
   final Widget? image;
@@ -183,7 +183,7 @@ class DoubleDialog extends StatelessWidget {
   final String? info;
   final Widget? content;
   final List<AvicennaDialogActionItem>? actions;
-  final EdgeInsets? insetPadding;
+  final EdgeInsets insetPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +200,7 @@ class DoubleDialog extends StatelessWidget {
       //     SizedBox(height: content == null ? 12 : 0)
       //   ],
       // ),
-      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      insetPadding: insetPadding,
       content: content,
       // contentPadding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
@@ -289,7 +289,7 @@ class DoubleDialog extends StatelessWidget {
           SizedBox(height: content == null ? 12 : 0)
         ],
       ),
-      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      insetPadding: insetPadding,
       // content: content,
       contentPadding: EdgeInsets.zero,
       content: //actions != null ? actions!.length > 4 ?
@@ -409,8 +409,8 @@ void showAvicennaDialog({
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
-  Duration transitionDuration = const Duration(milliseconds: 300),
-  Duration reverseTransitionDuration = const Duration(milliseconds: 150)
+  Duration transitionDuration = const Duration(milliseconds: 200),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 150),
 }) {
   showModal(
     context: context,
@@ -422,9 +422,17 @@ void showAvicennaDialog({
       reverseTransitionDuration: reverseTransitionDuration
     ),
     builder: (context) {
-      return BackdropFilter(
+      return barrierDismissible ?
+      BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
         child: child
+      ) :
+      WillPopScope(
+        onWillPop: () async => false,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          child: child
+        )
       );
     }
   );
@@ -439,7 +447,7 @@ Future<void> showAvicennaDialogAsync({
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
-  Duration transitionDuration = const Duration(milliseconds: 300),
+  Duration transitionDuration = const Duration(milliseconds: 200),
   Duration reverseTransitionDuration = const Duration(milliseconds: 150)
 }) async {
   await showModal(
@@ -452,9 +460,17 @@ Future<void> showAvicennaDialogAsync({
       reverseTransitionDuration: reverseTransitionDuration
     ),
     builder: (context) {
-      return BackdropFilter(
+      return barrierDismissible ?
+      BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
         child: child
+      ) :
+      WillPopScope(
+        onWillPop: () async => false,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          child: child
+        )
       );
     }
   );
