@@ -21,7 +21,7 @@ class AvicennaTextField extends StatelessWidget {
     this.inputFormatters,
     this.enabled = true,
     this.maxLength,
-    this.maxLines,
+    this.maxLines = 1,
     this.helperText,
     this.hintText,
     this.textFieldStyle = AvicennaTextFieldStyle.filled
@@ -39,7 +39,9 @@ class AvicennaTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool enabled;
   final int? maxLength;
-  final int? maxLines;
+
+  /// Only in range of 1 to 3
+  final int maxLines;
   final String? helperText;
   final String? hintText;
   final AvicennaTextFieldStyle textFieldStyle;
@@ -55,7 +57,8 @@ class AvicennaTextField extends StatelessWidget {
         )) : const SizedBox(height: 0),
         SizedBox(height: title != null ? 8 : 0),
         Container(
-          height: 44,// 51.2,
+          padding: EdgeInsets.only(top: maxLines == 1 ? 0 : maxLines == 2 ? 6 : maxLines > 2 ? 12 : 12),
+          height: maxLines == 1 ? 44 : maxLines == 2 ? 56 : maxLines > 2 ? 72 : 72,// 51.2,
           decoration: BoxDecoration(
             color: enabled
                 ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
@@ -77,7 +80,7 @@ class AvicennaTextField extends StatelessWidget {
             maxLines: maxLines,
             style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
             decoration: decoration ?? InputDecoration(
-              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
+              contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
               border: InputBorder.none,
               errorStyle: const TextStyle(
                 shadows: [
@@ -189,7 +192,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                   maxLength: widget.maxLength,
                   style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
                   decoration: widget.decoration ?? InputDecoration(
-                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
+                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
                     border: InputBorder.none,
                     // suffixIcon: Padding(
                     //   padding: EdgeInsetsDirectional.only(end: 12.0),
