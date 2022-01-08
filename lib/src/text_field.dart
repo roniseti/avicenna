@@ -21,6 +21,7 @@ class AvicennaTextField extends StatelessWidget {
     this.inputFormatters,
     this.enabled = true,
     this.maxLength,
+    this.maxLines,
     this.helperText,
     this.hintText,
     this.textFieldStyle = AvicennaTextFieldStyle.filled
@@ -38,6 +39,7 @@ class AvicennaTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool enabled;
   final int? maxLength;
+  final int? maxLines;
   final String? helperText;
   final String? hintText;
   final AvicennaTextFieldStyle textFieldStyle;
@@ -72,6 +74,7 @@ class AvicennaTextField extends StatelessWidget {
             obscureText: obscureText,
             initialValue: initialValue,
             maxLength: maxLength,
+            maxLines: maxLines,
             style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
             decoration: decoration ?? InputDecoration(
               contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -5.6),
