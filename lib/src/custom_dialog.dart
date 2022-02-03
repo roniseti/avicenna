@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:animations/animations.dart';
@@ -411,6 +412,7 @@ void showAvicennaDialog({
   required Widget child,
   Duration transitionDuration = const Duration(milliseconds: 200),
   Duration reverseTransitionDuration = const Duration(milliseconds: 150),
+  FutureOr<void> Function()? whenComplete,
 }) {
   showModal(
     context: context,
@@ -435,10 +437,10 @@ void showAvicennaDialog({
         )
       );
     }
-  );
+  ).whenComplete(whenComplete ?? (){});
 }
 
-Future<void> showAvicennaDialogAsync({
+Future<T?> showAvicennaDialogAsync<T>({
   required BuildContext context,
   bool barrierDismissible = true,
   Color barrierColor = Colors.black26,
@@ -448,9 +450,10 @@ Future<void> showAvicennaDialogAsync({
   RouteSettings? routeSettings,
   required Widget child,
   Duration transitionDuration = const Duration(milliseconds: 200),
-  Duration reverseTransitionDuration = const Duration(milliseconds: 150)
+  Duration reverseTransitionDuration = const Duration(milliseconds: 150),
+  FutureOr<void> Function()? whenComplete,
 }) async {
-  await showModal(
+  return await showModal(
     context: context,
     configuration: FadeScaleTransitionConfiguration(
       barrierDismissible: barrierDismissible,
@@ -473,5 +476,5 @@ Future<void> showAvicennaDialogAsync({
         )
       );
     }
-  );
+  ).whenComplete(whenComplete ?? (){});
 }

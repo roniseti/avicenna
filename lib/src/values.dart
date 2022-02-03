@@ -37,7 +37,7 @@ class AvicennaColors {
 
   static const Color textFieldBorder = Color(0xFFD9D9D9);
   static const Color textFieldFill = Color(0xFFEFEFEF);
-  static const Color textFieldFillDisabled = Color(0xFFD1D1D1);
+  static const Color textFieldFillDisabled = Color(0xFFDADADA);
 }
 
 class AvicennaProps {

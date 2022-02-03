@@ -24,7 +24,8 @@ class AvicennaTextField extends StatelessWidget {
     this.maxLines = 1,
     this.helperText,
     this.hintText,
-    this.textFieldStyle = AvicennaTextFieldStyle.filled
+    this.textFieldStyle = AvicennaTextFieldStyle.filled,
+    this.controller,
   }) : super(key: key);
 
   final String? title;
@@ -45,6 +46,7 @@ class AvicennaTextField extends StatelessWidget {
   final String? helperText;
   final String? hintText;
   final AvicennaTextFieldStyle textFieldStyle;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,7 @@ class AvicennaTextField extends StatelessWidget {
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: TextFormField(
+            controller: controller,
             onEditingComplete: onEditingComplete,
             enabled: enabled,
             inputFormatters: inputFormatters,
@@ -178,10 +181,10 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.6,
+                width: MediaQuery.of(context).size.width - 102,
                 child: TextFormField(
                   onEditingComplete: widget.onEditingComplete,
                   enabled: widget.enabled,
@@ -220,11 +223,139 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                   onSaved: widget.onSaved,
                 )
               ),
+              const Spacer(),
               IconButton(
-                padding: const EdgeInsets.only(right: 12),
+                // padding: const EdgeInsets.only(right: 12),
                 onPressed: _passwordIconChange,
+                splashRadius: 10,
                 icon: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: AvicennaColors.thirdBlack),
-              )
+              ),
+              const SizedBox(width: 6),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class AvicennaTextFieldWithSuffix extends StatelessWidget {
+  const AvicennaTextFieldWithSuffix({
+    Key? key,
+    required this.title,
+    this.initialValue,
+    this.onChanged,
+    this.onSaved,
+    this.onEditingComplete,
+    this.validator,
+    this.obscureText = false,
+    this.decoration,
+    this.keyboardType,
+    this.inputFormatters,
+    this.enabled = true,
+    this.maxLength,
+    this.helperText,
+    this.textFieldStyle = AvicennaTextFieldStyle.filled,
+    required this.suffixIcon,
+    this.onPressed,
+    required this.minusWidth,
+  }) : super(key: key);
+
+  final String title;
+  final String? initialValue;
+  final Function(String)? onChanged;
+  final Function(String?)? onSaved;
+  final Function()? onEditingComplete;
+  final String? Function(String?)? validator;
+  final bool obscureText;
+  final InputDecoration? decoration;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool enabled;
+  final int? maxLength;
+  final String? helperText;
+  final AvicennaTextFieldStyle textFieldStyle;
+  final Widget suffixIcon;
+  final Function()? onPressed;
+  final double minusWidth;
+
+//   @override
+//   _AvicennaTextFieldWithSuffixState createState() => _AvicennaTextFieldWithSuffixState();
+// }
+//
+// class _AvicennaTextFieldWithSuffixState extends State<AvicennaTextFieldWithSuffix> {
+//   bool _passwordState = true;
+//
+//   void _passwordIconChange() {
+//     setState(() {
+//       _passwordState = !_passwordState;
+//     });
+//   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: const TextStyle(
+          color: AvicennaColors.thirdBlack,
+          fontWeight: FontWeight.w400
+        )),
+        const SizedBox(height: 8),
+        Container(
+          height: 44,//51.2,
+          // padding: EdgeInsets.only(top: 20),
+          decoration: BoxDecoration(
+            color: enabled
+                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+                : AvicennaColors.textFieldFillDisabled,
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            border: textFieldStyle == AvicennaTextFieldStyle.filled
+                ? null
+                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
+          ),
+          child: Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width - 102 - minusWidth,
+                child: TextFormField(
+                  onEditingComplete: onEditingComplete,
+                  enabled: enabled,
+                  inputFormatters: inputFormatters,
+                  keyboardType: keyboardType,
+                  initialValue: initialValue,
+                  maxLength: maxLength,
+                  style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
+                  decoration: decoration ?? InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
+                    border: InputBorder.none,
+                    errorStyle: const TextStyle(
+                      shadows: [
+                        Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
+                      ],
+                      color: Colors.transparent
+                    ),
+                    helperText: helperText,
+                    helperStyle: const TextStyle(
+                      shadows: [
+                        Shadow(offset: Offset(0, 18))
+                      ],
+                      color: Colors.transparent
+                    ),
+                  ),
+                  validator: validator,
+                  onChanged: onChanged,
+                  onSaved: onSaved,
+                )
+              ),
+              const Spacer(),
+              IconButton(
+                // padding: const EdgeInsets.only(right: 12),
+                onPressed: onPressed,
+                splashRadius: 10,
+                icon: suffixIcon,
+              ),
+              const SizedBox(width: 6),
             ],
           ),
         ),

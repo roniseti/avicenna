@@ -63,8 +63,8 @@ class AvicennaFullScreenDialog extends StatelessWidget {
         leading: const BackButton(
           color: Colors.black
         ),
-        centerTitle: true,
-        title: Text(title ,style: const TextStyle(
+        // centerTitle: true,
+        title: Text(title, style: const TextStyle(
             color: Colors.black
         )),
         iconTheme: const IconThemeData(
