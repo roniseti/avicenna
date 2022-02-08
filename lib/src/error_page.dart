@@ -6,13 +6,13 @@ class AvicennaErrorPage extends StatelessWidget{
   const AvicennaErrorPage({
     Key? key,
     required this.message,
-    this.assetPath = 'assets/images/empty.png',
+    this.assetPath,
     this.action,
     this.imageWidth = 1
   }) : super(key: key);
 
   final String message;
-  final String assetPath;
+  final String? assetPath;
   final Widget? action;
   final double imageWidth;
 
@@ -21,7 +21,7 @@ class AvicennaErrorPage extends StatelessWidget{
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(assetPath, width: (MediaQuery.of(context).size.width) * (imageWidth)),
+        if (assetPath != null) Image.asset(assetPath ?? '', width: (MediaQuery.of(context).size.width) * (imageWidth)),
         SizedBox(height: 48, width: MediaQuery.of(context).size.width),
         Text(message,
           textAlign: TextAlign.center,

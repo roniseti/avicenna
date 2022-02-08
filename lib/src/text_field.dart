@@ -242,7 +242,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
 class AvicennaTextFieldWithSuffix extends StatelessWidget {
   const AvicennaTextFieldWithSuffix({
     Key? key,
-    required this.title,
+    this.title,
     this.initialValue,
     this.onChanged,
     this.onSaved,
@@ -254,6 +254,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
     this.inputFormatters,
     this.enabled = true,
     this.maxLength,
+    this.hintText,
     this.helperText,
     this.textFieldStyle = AvicennaTextFieldStyle.filled,
     required this.suffixIcon,
@@ -261,7 +262,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
     required this.minusWidth,
   }) : super(key: key);
 
-  final String title;
+  final String? title;
   final String? initialValue;
   final Function(String)? onChanged;
   final Function(String?)? onSaved;
@@ -273,6 +274,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool enabled;
   final int? maxLength;
+  final String? hintText;
   final String? helperText;
   final AvicennaTextFieldStyle textFieldStyle;
   final Widget suffixIcon;
@@ -297,11 +299,11 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: const TextStyle(
-          color: AvicennaColors.thirdBlack,
-          fontWeight: FontWeight.w400
-        )),
-        const SizedBox(height: 8),
+        title != null ? Text(title!, style: const TextStyle(
+            color: AvicennaColors.thirdBlack,
+            fontWeight: FontWeight.w400
+        )) : const SizedBox(height: 0),
+        SizedBox(height: title != null ? 8 : 0),
         Container(
           height: 44,//51.2,
           // padding: EdgeInsets.only(top: 20),
@@ -335,6 +337,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
                       ],
                       color: Colors.transparent
                     ),
+                    hintText: hintText,
                     helperText: helperText,
                     helperStyle: const TextStyle(
                       shadows: [
