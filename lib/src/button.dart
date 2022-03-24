@@ -6,7 +6,7 @@ class AvicennaButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     this.onLongPress,
-    this.text,
+    required this.text,
     this.color,
     this.textColor,
     this.disabled,
@@ -15,7 +15,7 @@ class AvicennaButton extends StatelessWidget {
 
   final void Function()? onPressed;
   final void Function()? onLongPress;
-  final String? text;
+  final String text;
   final Color? color;
   final Color? textColor;
   final bool? disabled;
@@ -43,7 +43,7 @@ class AvicennaButton extends StatelessWidget {
           )
         )
       ),
-      child: Text(text!, style: TextStyle(
+      child: Text(text, style: TextStyle(
         color: textColor ?? AvicennaColors.white,
         fontSize: 16
       )),

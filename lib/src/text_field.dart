@@ -26,6 +26,7 @@ class AvicennaTextField extends StatelessWidget {
     this.hintText,
     this.textFieldStyle = AvicennaTextFieldStyle.filled,
     this.controller,
+    this.onTap,
   }) : super(key: key);
 
   final String? title;
@@ -47,6 +48,7 @@ class AvicennaTextField extends StatelessWidget {
   final String? hintText;
   final AvicennaTextFieldStyle textFieldStyle;
   final TextEditingController? controller;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +74,7 @@ class AvicennaTextField extends StatelessWidget {
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: TextFormField(
+            onTap: onTap,
             controller: controller,
             onEditingComplete: onEditingComplete,
             enabled: enabled,
@@ -127,6 +130,7 @@ class AvicennaPasswordField extends StatefulWidget {
     this.maxLength,
     this.helperText,
     this.textFieldStyle = AvicennaTextFieldStyle.filled,
+    this.onTap,
   }) : super(key: key);
 
   final String title;
@@ -143,6 +147,7 @@ class AvicennaPasswordField extends StatefulWidget {
   final int? maxLength;
   final String? helperText;
   final AvicennaTextFieldStyle textFieldStyle;
+  final Function()? onTap;
 
   @override
   _AvicennaPasswordFieldState createState() => _AvicennaPasswordFieldState();
@@ -186,6 +191,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
               SizedBox(
                 width: MediaQuery.of(context).size.width - 102,
                 child: TextFormField(
+                  onTap: widget.onTap,
                   onEditingComplete: widget.onEditingComplete,
                   enabled: widget.enabled,
                   inputFormatters: widget.inputFormatters,
@@ -259,7 +265,10 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
     this.textFieldStyle = AvicennaTextFieldStyle.filled,
     required this.suffixIcon,
     this.onPressed,
+    this.onFieldTap,
     required this.minusWidth,
+    this.borderRadius = 8,
+    this.controller,
   }) : super(key: key);
 
   final String? title;
@@ -279,7 +288,10 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
   final AvicennaTextFieldStyle textFieldStyle;
   final Widget suffixIcon;
   final Function()? onPressed;
+  final Function()? onFieldTap;
   final double minusWidth;
+  final double borderRadius;
+  final TextEditingController? controller;
 
 //   @override
 //   _AvicennaTextFieldWithSuffixState createState() => _AvicennaTextFieldWithSuffixState();
@@ -311,7 +323,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
             color: enabled
                 ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
                 : AvicennaColors.textFieldFillDisabled,
-            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
                 ? null
                 : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
@@ -321,6 +333,8 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width - 102 - minusWidth,
                 child: TextFormField(
+                  controller: controller,
+                  onTap: onFieldTap,
                   onEditingComplete: onEditingComplete,
                   enabled: enabled,
                   inputFormatters: inputFormatters,

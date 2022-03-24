@@ -8,7 +8,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   const AvicennaDropDownPicker({
     Key? key,
     required this.items,
-    required this.title,
+    this.title,
     this.hint,
     this.initialValue,
     required this.onChanged,
@@ -20,7 +20,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   }) : super(key: key);
 
   final List<String> items;
-  final String title;
+  final String? title;
   final Widget? hint;
   final String? initialValue;
   final Function(String) onChanged;
@@ -35,11 +35,11 @@ class AvicennaDropDownPicker extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: const TextStyle(
-          color: AvicennaColors.thirdBlack,
-          fontWeight: FontWeight.w400
+        if (title != null) Text(title!, style: const TextStyle(
+            color: AvicennaColors.thirdBlack,
+            fontWeight: FontWeight.w400
         )),
-        const SizedBox(height: 8),
+        SizedBox(height: title != null ? 8 : 0),
         Container(
           height: 44, // 51.2,
           decoration: BoxDecoration(
@@ -59,6 +59,8 @@ class AvicennaDropDownPicker extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.transparent)
               ),
               errorBorder: InputBorder.none,
+              focusedErrorBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
               contentPadding: EdgeInsets.only(
                 left: 16,
                 right: 16,

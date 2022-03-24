@@ -49,16 +49,18 @@ class AvicennaFullScreenDialog extends StatelessWidget {
   const AvicennaFullScreenDialog({
     Key? key,
     required this.title,
-    required this.content
+    required this.content,
+    this.backgroundColor = AvicennaColors.lightBackground,
   }) : super(key: key);
 
   final String title;
   final Widget content;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AvicennaColors.background,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         leading: const BackButton(
           color: Colors.black
@@ -132,6 +134,51 @@ class AvicennaIconButton extends StatelessWidget {
           onTap: onTap,
           child: Container(
             padding: const EdgeInsets.all(16),
+            child: icon
+          )
+        )
+      )
+    );
+  }
+
+}
+
+enum AvicennaSmallIconButtonSize {
+  shrink,
+  normal,
+}
+
+/// round Button with Icon only
+class AvicennaSmallIconButton extends StatelessWidget {
+  const AvicennaSmallIconButton({
+    Key? key,
+    required this.onTap,
+    this.tooltip = 'Close',
+    required this.icon,
+    this.color = Colors.white,
+    this.size = AvicennaSmallIconButtonSize.normal,
+  }) : super(key: key);
+
+  final void Function() onTap;
+  final String tooltip;
+  final Icon icon;
+  final Color color;
+  final AvicennaSmallIconButtonSize size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child:  Material(
+        color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: onTap,
+          child: Container(
+            padding: EdgeInsets.all(size == AvicennaSmallIconButtonSize.shrink ? 2 : 6),
             child: icon
           )
         )

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'values.dart';
 
 enum AvicennaChipSize {
-  small, medium, large
+  shrink, small, medium, large
 }
 /// Actually there's already material chip
 class AvicennaChip extends StatelessWidget {
@@ -13,6 +13,7 @@ class AvicennaChip extends StatelessWidget {
     this.textColor,
     this.color,
     this.size,
+    this.borderRadius = 14,
   }) : super(key: key);
 
   final String? text;
@@ -20,25 +21,28 @@ class AvicennaChip extends StatelessWidget {
   final Color? textColor;
   final Color? color;
   final AvicennaChipSize? size;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
-    double multiplier = size == AvicennaChipSize.large ? 1.5 : size == AvicennaChipSize.medium ? 1.25 : 1;
+    double multiplier = size == AvicennaChipSize.large ? 1.5 : size == AvicennaChipSize.medium ? 1.2 : 1;
+    double height = size == AvicennaChipSize.shrink ? 22 : 28;
+    double padding = size == AvicennaChipSize.shrink ? 8 : 12;
     return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         padding: MaterialStateProperty.all(
-          EdgeInsets.only(left: 12 * multiplier, right: 12 * multiplier)
+          EdgeInsets.only(left: padding * multiplier, right: padding * multiplier)
         ),
         minimumSize: MaterialStateProperty.all(
-          Size(28 * multiplier, 28 * multiplier)
+          Size(28 * multiplier, height * multiplier)
         ),
         backgroundColor: MaterialStateProperty.all(color ?? AvicennaColors.label),
         shadowColor: MaterialStateProperty.all(const Color(0x301A77AD)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14 * multiplier),
+            borderRadius: BorderRadius.circular(borderRadius * multiplier),
             // side: BorderSide(color: Colors.labelOutline)
           )
         )

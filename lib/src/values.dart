@@ -52,6 +52,15 @@ class AvicennaProps {
     ),
   ];
 
+  static var boxShadowSoftEqual = [
+    BoxShadow(
+      color: const Color(0xFF193148).withOpacity(0.1),
+      spreadRadius: 0,
+      blurRadius: 4,
+      offset: const Offset(0, 0),
+    )
+  ];
+
   static var boxShadowSoft = [
     BoxShadow(
       color: const Color(0xFF363535).withOpacity(0.1),
