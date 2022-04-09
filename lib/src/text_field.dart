@@ -84,7 +84,7 @@ class AvicennaTextField extends StatelessWidget {
             initialValue: initialValue,
             maxLength: maxLength,
             maxLines: maxLines,
-            style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
+            style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.black),
             decoration: decoration ?? InputDecoration(
               contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
               border: InputBorder.none,
@@ -199,7 +199,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                   obscureText: _passwordState,
                   initialValue: widget.initialValue,
                   maxLength: widget.maxLength,
-                  style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
+                  style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.black),
                   decoration: widget.decoration ?? InputDecoration(
                     contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
                     border: InputBorder.none,
@@ -341,7 +341,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
                   keyboardType: keyboardType,
                   initialValue: initialValue,
                   maxLength: maxLength,
-                  style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.thirdBlack),
+                  style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.black),
                   decoration: decoration ?? InputDecoration(
                     contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
                     border: InputBorder.none,

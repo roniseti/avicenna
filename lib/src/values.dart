@@ -37,7 +37,7 @@ class AvicennaColors {
 
   static const Color textFieldBorder = Color(0xFFD9D9D9);
   static const Color textFieldFill = Color(0xFFEFEFEF);
-  static const Color textFieldFillDisabled = Color(0xFFDADADA);
+  static const Color textFieldFillDisabled = Color(0xFFE0E0E0);
 }
 
 class AvicennaProps {
@@ -57,6 +57,15 @@ class AvicennaProps {
       color: const Color(0xFF193148).withOpacity(0.1),
       spreadRadius: 0,
       blurRadius: 4,
+      offset: const Offset(0, 0),
+    )
+  ];
+
+  static var boxShadowEqual = [
+    BoxShadow(
+      color: const Color(0xFF193148).withOpacity(0.16),
+      spreadRadius: 0,
+      blurRadius: 6,
       offset: const Offset(0, 0),
     )
   ];
