@@ -14,6 +14,7 @@ class AvicennaChip extends StatelessWidget {
     this.color,
     this.size,
     this.borderRadius = 14,
+    this.child,
   }) : super(key: key);
 
   final String? text;
@@ -22,6 +23,7 @@ class AvicennaChip extends StatelessWidget {
   final Color? color;
   final AvicennaChipSize? size;
   final double borderRadius;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class AvicennaChip extends StatelessWidget {
         )
       ),
       onPressed: onPressed,
-      child: Text(text!, style: TextStyle(
+      child: child ?? Text(text!, style: TextStyle(
         color: textColor ?? AvicennaColors.labelText,
         fontSize: 12 * multiplier,
         // fontStyle: FontStyle.italic

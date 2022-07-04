@@ -62,31 +62,49 @@ class AvicennaDialog extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  for (var i = 0; i < actions.length -1 ; i++)
-                    modalAction(
-                      actions[i].text,
-                      actions[i].child,
-                      actions[i].onPressed,
-                      MediaQuery.of(context).size.width,
-                      radius,
-                      i == actions.length - 1,
-                      actions[i].isDestructive,
-                      actions[i].withTopBorder
-                    )
+                  for (var i = 0; i < actions.length -1 ; i++) ...[
+                    // modalAction(
+                    //   actions[i].text,
+                    //   actions[i].child,
+                    //   actions[i].onPressed,
+                    //   MediaQuery.of(context).size.width,
+                    //   radius,
+                    //   i == actions.length - 1,
+                    //   actions[i].isDestructive,
+                    //   actions[i].withTopBorder
+                    // ),
+                    const SizedBox(height: 1),
+                    const Divider(height: 0, thickness: 1),
+                    ModalAction(
+                      text: actions[i].text,
+                      width: MediaQuery.of(context).size.width,
+                      onPressed: actions[i].onPressed,
+                      radius: radius,
+                      last: i == actions.length - 1,
+                      isDestructive: actions[i].isDestructive,
+                      withTopBorder: actions[i].withTopBorder,
+                      child: Text(actions[i].text,
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
+                      ),
+                    ),
+                  ]
                 ],
               )
             )
           ),
-          modalAction(
-            actions[actions.length -1].text,
-            actions[actions.length -1].child,
-            actions[actions.length -1].onPressed,
-            MediaQuery.of(context).size.width,
-            radius,
-            actions.length -1 == actions.length - 1,
-            actions[actions.length -1].isDestructive,
-            actions[actions.length -1].withTopBorder
-          )
+          const Divider(height: 0, thickness: 1),
+          ModalAction(
+            text: actions[actions.length -1].text,
+            width: MediaQuery.of(context).size.width,
+            onPressed: actions[actions.length -1].onPressed,
+            radius: radius,
+            last: actions.length -1 == actions.length - 1,
+            isDestructive: actions[actions.length -1].isDestructive,
+            withTopBorder: actions[actions.length -1].withTopBorder,
+            child: Text(actions[actions.length -1].text,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[actions.length -1].isDestructive ? AvicennaColors.danger : Colors.black)
+            ),
+          ),
         ],
       )
       // for (var i = 0; i < actions!.length; i++)
@@ -135,7 +153,8 @@ class AvicennaDialog extends StatelessWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
             ),
           ),
-      ]],
+        ]
+      ],
       buttonPadding: const EdgeInsets.all(0),
     );
   }
