@@ -278,11 +278,13 @@ class AvicennaPress extends StatefulWidget {
     this.onTap,
     this.onLongPress,
     required this.child,
+    this.debugColor,
   }) : super(key: key);
 
   final void Function()? onTap;
   final void Function()? onLongPress;
   final Widget child;
+  final Color? debugColor;
 
   @override
   State<AvicennaPress> createState() => _AvicennaPressState();
@@ -356,21 +358,24 @@ class _AvicennaPressState extends State<AvicennaPress> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTapDown: _handleTapDown,
-      onTapUp: _handleTapUp,
-      onTapCancel: _handleTapCancel,
-      onTap: widget.onTap,
-      onLongPress: widget.onLongPress != null ? () {
-        HapticFeedback.heavyImpact();
-        widget.onLongPress!.call();
-      } : null,
-      child: Semantics(
-        button: true,
-        child: FadeTransition(
-          opacity: _opacityAnimation,
-          child: widget.child,
+    return Container(
+      color: widget.debugColor,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTapDown: _handleTapDown,
+        onTapUp: _handleTapUp,
+        onTapCancel: _handleTapCancel,
+        onTap: widget.onTap,
+        onLongPress: widget.onLongPress != null ? () {
+          HapticFeedback.heavyImpact();
+          widget.onLongPress!.call();
+        } : null,
+        child: Semantics(
+          button: true,
+          child: FadeTransition(
+            opacity: _opacityAnimation,
+            child: widget.child,
+          ),
         ),
       ),
     );
