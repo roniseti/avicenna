@@ -159,90 +159,90 @@ class AvicennaDialog extends StatelessWidget {
     );
   }
 
-  Widget modalAction(String text, Widget? child, Function()? onPressed, double width, double radius,bool last, bool isDestructive, bool withTopBorder) {
-    return Material(
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
-        onTap: onPressed,
-        child: Column(
-          children: [
-            // Divider(height: 0, thickness: 1),
-            Container(
-              width: width,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
-                    width: withTopBorder ? 1 : 0
-                  )
-                )
-              ),
-              padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
-              child: Center(
-                child: child ?? Text(text,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? AvicennaColors.danger : Colors.black)
-                )
-              )
-            ),
-          ],
-        )
-      ),
-    );
-    // return GestureDetector(
-    //   behavior: HitTestBehavior.opaque,
-    //   // onTapDown: enabled ? _handleTapDown : null,
-    //   // onTapUp: enabled ? _handleTapUp : null,
-    //   // onTapCancel: enabled ? _handleTapCancel : null,
-    //   onTap: onPressed,
-    //   child: Semantics(
-    //     button: true,
-    //     child:
-    //     // ConstrainedBox(
-    //     //   constraints: widget.minSize == null
-    //     //       ? const BoxConstraints()
-    //     //       : BoxConstraints(
-    //     //     minWidth: widget.minSize!,
-    //     //     minHeight: widget.minSize!,
-    //     //   ),
-    //     //   child:
-    //       FadeTransition(
-    //         opacity: _opacityAnimation,
-    //         child: DecoratedBox(
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
-    //             // color: backgroundColor != null && !enabled
-    //             //     ? CupertinoDynamicColor.resolve(widget.disabledColor, context)
-    //             //     : backgroundColor,
-    //           ),
-    //           child: Padding(
-    //             padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24), //widget.padding ?? (backgroundColor != null
-    //                 // ? _kBackgroundButtonPadding
-    //                 // : _kButtonPadding),
-    //             child: Align(
-    //               // alignment: widget.alignment,
-    //               widthFactor: 1.0,
-    //               heightFactor: 1.0,
-    //               child:
-    //               // DefaultTextStyle(
-    //               //   style: textStyle,
-    //               //   child: IconTheme(
-    //               //     data: IconThemeData(color: foregroundColor),
-    //               //     child:
-    //                   child,
-    //                 // ),
-    //               // ),
-    //             ),
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //   // ),
-    // );
-  }
+  // Widget modalAction(String text, Widget? child, Function()? onPressed, double width, double radius,bool last, bool isDestructive, bool withTopBorder) {
+  //   return Material(
+  //     color: Colors.white,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
+  //     ),
+  //     child: InkWell(
+  //       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
+  //       onTap: onPressed,
+  //       child: Column(
+  //         children: [
+  //           // Divider(height: 0, thickness: 1),
+  //           Container(
+  //             width: width,
+  //             decoration: BoxDecoration(
+  //               border: Border(
+  //                 top: BorderSide(
+  //                   color: withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
+  //                   width: withTopBorder ? 1 : 0
+  //                 )
+  //               )
+  //             ),
+  //             padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
+  //             child: Center(
+  //               child: child ?? Text(text,
+  //                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? AvicennaColors.danger : Colors.black)
+  //               )
+  //             )
+  //           ),
+  //         ],
+  //       )
+  //     ),
+  //   );
+  //   // return GestureDetector(
+  //   //   behavior: HitTestBehavior.opaque,
+  //   //   // onTapDown: enabled ? _handleTapDown : null,
+  //   //   // onTapUp: enabled ? _handleTapUp : null,
+  //   //   // onTapCancel: enabled ? _handleTapCancel : null,
+  //   //   onTap: onPressed,
+  //   //   child: Semantics(
+  //   //     button: true,
+  //   //     child:
+  //   //     // ConstrainedBox(
+  //   //     //   constraints: widget.minSize == null
+  //   //     //       ? const BoxConstraints()
+  //   //     //       : BoxConstraints(
+  //   //     //     minWidth: widget.minSize!,
+  //   //     //     minHeight: widget.minSize!,
+  //   //     //   ),
+  //   //     //   child:
+  //   //       FadeTransition(
+  //   //         opacity: _opacityAnimation,
+  //   //         child: DecoratedBox(
+  //   //           decoration: BoxDecoration(
+  //   //             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
+  //   //             // color: backgroundColor != null && !enabled
+  //   //             //     ? CupertinoDynamicColor.resolve(widget.disabledColor, context)
+  //   //             //     : backgroundColor,
+  //   //           ),
+  //   //           child: Padding(
+  //   //             padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24), //widget.padding ?? (backgroundColor != null
+  //   //                 // ? _kBackgroundButtonPadding
+  //   //                 // : _kButtonPadding),
+  //   //             child: Align(
+  //   //               // alignment: widget.alignment,
+  //   //               widthFactor: 1.0,
+  //   //               heightFactor: 1.0,
+  //   //               child:
+  //   //               // DefaultTextStyle(
+  //   //               //   style: textStyle,
+  //   //               //   child: IconTheme(
+  //   //               //     data: IconThemeData(color: foregroundColor),
+  //   //               //     child:
+  //   //                   child,
+  //   //                 // ),
+  //   //               // ),
+  //   //             ),
+  //   //           ),
+  //   //         ),
+  //   //       ),
+  //   //     ),
+  //   //   // ),
+  //   // );
+  // }
 
 }
 
@@ -415,7 +415,6 @@ class AvicennaDialogActionItem {
   final Function()? onPressed;
   final bool withTopBorder;
 }
-
 
 class DoubleDialog extends StatelessWidget {
   const DoubleDialog({
@@ -653,14 +652,14 @@ class DoubleDialog extends StatelessWidget {
 void showAvicennaDialog({
   required BuildContext context,
   bool barrierDismissible = true,
-  Color barrierColor = Colors.black26,
+  Color barrierColor = Colors.black12,
   String barrierLabel = 'Dismiss',
   bool useSafeArea = true,
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
-  Duration transitionDuration = const Duration(milliseconds: 200),
-  Duration reverseTransitionDuration = const Duration(milliseconds: 150),
+  Duration transitionDuration = const Duration(milliseconds: 300),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 200),
   FutureOr<void> Function()? whenComplete,
 }) {
   showModal(
@@ -692,14 +691,14 @@ void showAvicennaDialog({
 Future<T?> showAvicennaDialogAsync<T>({
   required BuildContext context,
   bool barrierDismissible = true,
-  Color barrierColor = Colors.black26,
+  Color barrierColor = Colors.black12,
   String barrierLabel = 'Dismiss',
   bool useSafeArea = true,
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
-  Duration transitionDuration = const Duration(milliseconds: 200),
-  Duration reverseTransitionDuration = const Duration(milliseconds: 150),
+  Duration transitionDuration = const Duration(milliseconds: 300),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 200),
   FutureOr<void> Function()? whenComplete,
 }) async {
   return await showModal(
