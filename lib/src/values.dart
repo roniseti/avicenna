@@ -96,4 +96,14 @@ class AvicennaProps {
       offset: const Offset(8, 0),
     ),
   ];
+
+  static var boxShadowUltraSoft = [
+    BoxShadow(
+      color: const Color(0xFF56939A).withOpacity(0.10),
+      spreadRadius: 0,
+      blurRadius: 10,
+      offset: const Offset(0, 0),
+    ),
+  ];
+
 }

@@ -83,9 +83,10 @@ class AvicennaDialog extends StatelessWidget {
                       last: i == actions.length - 1,
                       isDestructive: actions[i].isDestructive,
                       withTopBorder: actions[i].withTopBorder,
-                      child: Text(actions[i].text,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
-                      ),
+                      child: actions[i].child,
+                      // child: Text(actions[i].text,
+                      //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
+                      // ),
                     ),
                   ]
                 ],
@@ -101,9 +102,10 @@ class AvicennaDialog extends StatelessWidget {
             last: actions.length -1 == actions.length - 1,
             isDestructive: actions[actions.length -1].isDestructive,
             withTopBorder: actions[actions.length -1].withTopBorder,
-            child: Text(actions[actions.length -1].text,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[actions.length -1].isDestructive ? AvicennaColors.danger : Colors.black)
-            ),
+            child: actions[actions.length -1].child,
+            // child: Text(actions[actions.length -1].text,
+            //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[actions.length -1].isDestructive ? AvicennaColors.danger : Colors.black)
+            // ),
           ),
         ],
       )
@@ -149,9 +151,10 @@ class AvicennaDialog extends StatelessWidget {
             last: i == actions.length - 1,
             isDestructive: actions[i].isDestructive,
             withTopBorder: actions[i].withTopBorder,
-            child: Text(actions[i].text,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
-            ),
+            child: actions[i].child,
+            // child: Text(actions[i].text,
+            //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
+            // ),
           ),
         ]
       ],
@@ -331,7 +334,8 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
     if (_animationController.isAnimating) return;
     final bool wasHeldDown = _buttonHeldDown;
     final TickerFuture ticker = _buttonHeldDown
-        ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
+        // ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
+        ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubic)
         : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
     ticker.then<void>((void value) {
       if (mounted && wasHeldDown != _buttonHeldDown) _animate();
@@ -385,7 +389,9 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
                     //   child: IconTheme(
                     //     data: IconThemeData(color: foregroundColor),
                     //     child:
-                    widget.child,
+                    widget.child ?? Text(widget.text,
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: widget.isDestructive ? AvicennaColors.danger : Colors.black)
+                    ),
                     // ),
                     // ),
                   ),
