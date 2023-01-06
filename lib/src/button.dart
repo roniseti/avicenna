@@ -51,3 +51,86 @@ class AvicennaButton extends StatelessWidget {
   }
 
 }
+
+enum AvicennaSmallIconButtonSize {
+  shrink,
+  normal,
+}
+
+/// round Button with Icon only
+class AvicennaIconButton extends StatelessWidget {
+  const AvicennaIconButton({
+    Key? key,
+    required this.onTap,
+    this.tooltip = 'Close',
+    this.icon = const Icon(Icons.close),
+    this.color = Colors.white
+  }) : super(key: key);
+
+  final void Function() onTap;
+  final String tooltip;
+  final Icon icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child:  Material(
+        color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: icon
+          )
+        )
+      )
+    );
+  }
+
+}
+
+/// round Button with Icon only
+class AvicennaSmallIconButton extends StatelessWidget {
+  const AvicennaSmallIconButton({
+    Key? key,
+    required this.onTap,
+    this.tooltip = 'Close',
+    required this.icon,
+    this.color = Colors.white,
+    this.size = AvicennaSmallIconButtonSize.normal,
+  }) : super(key: key);
+
+  final void Function() onTap;
+  final String tooltip;
+  final Icon icon;
+  final Color color;
+  final AvicennaSmallIconButtonSize size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child:  Material(
+        color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: onTap,
+          child: Container(
+            padding: EdgeInsets.all(size == AvicennaSmallIconButtonSize.shrink ? 2 : 6),
+            child: icon
+          )
+        )
+      )
+    );
+  }
+
+}

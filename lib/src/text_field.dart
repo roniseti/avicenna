@@ -36,6 +36,10 @@ class AvicennaTextField extends StatelessWidget {
   final Function()? onEditingComplete;
   final String? Function(String?)? validator;
   final bool obscureText;
+
+  /// if using the decoration, please add this
+  ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
+  ///   border: InputBorder.none
   final InputDecoration? decoration;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
@@ -56,8 +60,8 @@ class AvicennaTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         title != null ? Text(title!, style: const TextStyle(
-            color: AvicennaColors.thirdBlack,
-            fontWeight: FontWeight.w400
+          color: AvicennaColors.thirdBlack,
+          fontWeight: FontWeight.w400
         )) : const SizedBox(height: 0),
         SizedBox(height: title != null ? 8 : 0),
         Container(
@@ -65,12 +69,12 @@ class AvicennaTextField extends StatelessWidget {
           height: maxLines == 1 ? 44 : maxLines == 2 ? 56 : maxLines > 2 ? 72 : 72,// 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-                : AvicennaColors.textFieldFillDisabled,
+              ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
-                ? null
-                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
+              ? null
+              : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: TextFormField(
@@ -168,8 +172,8 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(widget.title, style: const TextStyle(
-            color: AvicennaColors.thirdBlack,
-            fontWeight: FontWeight.w400
+          color: AvicennaColors.thirdBlack,
+          fontWeight: FontWeight.w400
         )),
         const SizedBox(height: 8),
         Container(
@@ -177,12 +181,12 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             color: widget.enabled
-                ? widget.textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-                : AvicennaColors.textFieldFillDisabled,
+              ? widget.textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: widget.textFieldStyle == AvicennaTextFieldStyle.filled
-                ? null
-                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
+              ? null
+              : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
             // boxShadow: av.Props.boxShadowVerySoft
           ),
           child: Row(
@@ -211,17 +215,17 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                     //   ),
                     // ),
                     errorStyle: const TextStyle(
-                        shadows: [
-                          Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
-                        ],
-                        color: Colors.transparent
+                      shadows: [
+                        Shadow(color: AvicennaColors.danger, offset: Offset(-6, 18))
+                      ],
+                      color: Colors.transparent
                     ),
                     helperText: widget.helperText,
                     helperStyle: const TextStyle(
-                        shadows: [
-                          Shadow(offset: Offset(0, 18))
-                        ],
-                        color: Colors.transparent
+                      shadows: [
+                        Shadow(offset: Offset(0, 18))
+                      ],
+                      color: Colors.transparent
                     ),
                   ),
                   validator: widget.validator,
@@ -321,12 +325,12 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-                : AvicennaColors.textFieldFillDisabled,
+              ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled,
             borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
-                ? null
-                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
+              ? null
+              : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
           child: Row(
             children: [

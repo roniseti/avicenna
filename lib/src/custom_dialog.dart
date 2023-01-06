@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:animations/animations.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'values.dart';
 
@@ -291,9 +290,11 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
       value: 0.0,
       vsync: this,
     );
+
     _opacityAnimation = _animationController
-        .drive(CurveTween(curve: Curves.decelerate))
-        .drive(_opacityTween);
+      .drive(CurveTween(curve: Curves.decelerate))
+      .drive(_opacityTween);
+    
     _setTween();
   }
 
@@ -334,9 +335,9 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
     if (_animationController.isAnimating) return;
     final bool wasHeldDown = _buttonHeldDown;
     final TickerFuture ticker = _buttonHeldDown
-        // ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
-        ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubic)
-        : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
+      // ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
+      ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubic)
+      : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
     ticker.then<void>((void value) {
       if (mounted && wasHeldDown != _buttonHeldDown) _animate();
     });
@@ -445,173 +446,175 @@ class DoubleDialog extends StatelessWidget {
     var radius = 12.0;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [AlertDialog(
-      // title: Column(
-      //   children: [
-      //     image ?? SizedBox(height: 12),
-      //     Text(title ?? '', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
-      //     SizedBox(height: info != null ? 18 : 0),
-      //     Text(info ?? '', style: TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
-      //     SizedBox(height: content == null ? 12 : 0)
-      //   ],
-      // ),
-      insetPadding: insetPadding,
-      content: content,
-      // contentPadding: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      // // actions: actions != null ? [
-      // //   for (var i = 0; i < actions!.length; i++)
-      // //     modalAction(
-      // //       actions![i].text,
-      // //       actions![i].onPressed,
-      // //       MediaQuery.of(context).size.width,
-      // //       radius,
-      // //       i == actions!.length - 1,
-      // //       actions![i].isDestructive
-      // //     )
-      // // ] : [],
-      // actions: actions != null ? actions!.length > 4 ?
-      // [
-      //   Container(
-      //       child: Column(
-      //         children: [
-      //           Container(
-      //               height: 180,
-      //               child: SingleChildScrollView(
-      //                   child: Column(
-      //                     children: [
-      //                       for (var i = 0; i < actions!.length -1 ; i++)
-      //                         modalAction(
-      //                             actions![i].text,
-      //                             actions![i].child,
-      //                             actions![i].onPressed,
-      //                             MediaQuery.of(context).size.width,
-      //                             radius,
-      //                             i == actions!.length - 1,
-      //                             actions![i].isDestructive,
-      //                             actions![i].withTopBorder
-      //                         )
-      //                     ],
-      //                   )
-      //               )
-      //           ),
-      //           modalAction(
-      //               actions![actions!.length -1].text,
-      //               actions![actions!.length -1].child,
-      //               actions![actions!.length -1].onPressed,
-      //               MediaQuery.of(context).size.width,
-      //               radius,
-      //               actions!.length -1 == actions!.length - 1,
-      //               actions![actions!.length -1].isDestructive,
-      //               actions![actions!.length -1].withTopBorder
-      //           )
-      //         ],
-      //       )
-      //   )
-      //   // for (var i = 0; i < actions!.length; i++)
-      //   //   modalAction(
-      //   //     actions![i].text,
-      //   //     actions![i].onPressed,
-      //   //     MediaQuery.of(context).size.width,
-      //   //     radius,
-      //   //     i == actions!.length - 1,
-      //   //     actions![i].isDestructive
-      //   //   )
-      // ] : [
-      //   for (var i = 0; i < actions!.length; i++)
-      //     modalAction(
-      //         actions![i].text,
-      //         actions![i].child,
-      //         actions![i].onPressed,
-      //         MediaQuery.of(context).size.width,
-      //         radius,
-      //         i == actions!.length - 1,
-      //         actions![i].isDestructive,
-      //         actions![i].withTopBorder
-      //     )
-      // ] : [],
-      buttonPadding: const EdgeInsets.all(0),
-    ),
-    AlertDialog(
-      title: Column(
-        children: [
-          image ?? const SizedBox(height: 12),
-          Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
-          SizedBox(height: info != null ? 18 : 0),
-          Text(info ?? '', style: const TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
-          SizedBox(height: content == null ? 12 : 0)
-        ],
-      ),
-      insetPadding: insetPadding,
-      // content: content,
-      contentPadding: EdgeInsets.zero,
-      content: //actions != null ? actions!.length > 4 ?
-      IntrinsicHeight(child:
-        Column(
-          children: [
-            SizedBox(
-                height: 190,
-                child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        for (var i = 0; i < actions!.length; i++)
-                          modalAction(
-                              actions![i].text,
-                              actions![i].child,
-                              actions![i].onPressed,
-                              MediaQuery.of(context).size.width /3,
-                              radius,
-                              i == 0,
-                              i == actions!.length - 1,
-                              actions![i].isDestructive,
-                              actions![i].withTopBorder
-                          )
-                      ],
+      children: [
+        AlertDialog(
+          // title: Column(
+          //   children: [
+          //     image ?? SizedBox(height: 12),
+          //     Text(title ?? '', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+          //     SizedBox(height: info != null ? 18 : 0),
+          //     Text(info ?? '', style: TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
+          //     SizedBox(height: content == null ? 12 : 0)
+          //   ],
+          // ),
+          insetPadding: insetPadding,
+          content: content,
+          // contentPadding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius),
+          ),
+          // // actions: actions != null ? [
+          // //   for (var i = 0; i < actions!.length; i++)
+          // //     modalAction(
+          // //       actions![i].text,
+          // //       actions![i].onPressed,
+          // //       MediaQuery.of(context).size.width,
+          // //       radius,
+          // //       i == actions!.length - 1,
+          // //       actions![i].isDestructive
+          // //     )
+          // // ] : [],
+          // actions: actions != null ? actions!.length > 4 ?
+          // [
+          //   Container(
+          //       child: Column(
+          //         children: [
+          //           Container(
+          //               height: 180,
+          //               child: SingleChildScrollView(
+          //                   child: Column(
+          //                     children: [
+          //                       for (var i = 0; i < actions!.length -1 ; i++)
+          //                         modalAction(
+          //                             actions![i].text,
+          //                             actions![i].child,
+          //                             actions![i].onPressed,
+          //                             MediaQuery.of(context).size.width,
+          //                             radius,
+          //                             i == actions!.length - 1,
+          //                             actions![i].isDestructive,
+          //                             actions![i].withTopBorder
+          //                         )
+          //                     ],
+          //                   )
+          //               )
+          //           ),
+          //           modalAction(
+          //               actions![actions!.length -1].text,
+          //               actions![actions!.length -1].child,
+          //               actions![actions!.length -1].onPressed,
+          //               MediaQuery.of(context).size.width,
+          //               radius,
+          //               actions!.length -1 == actions!.length - 1,
+          //               actions![actions!.length -1].isDestructive,
+          //               actions![actions!.length -1].withTopBorder
+          //           )
+          //         ],
+          //       )
+          //   )
+          //   // for (var i = 0; i < actions!.length; i++)
+          //   //   modalAction(
+          //   //     actions![i].text,
+          //   //     actions![i].onPressed,
+          //   //     MediaQuery.of(context).size.width,
+          //   //     radius,
+          //   //     i == actions!.length - 1,
+          //   //     actions![i].isDestructive
+          //   //   )
+          // ] : [
+          //   for (var i = 0; i < actions!.length; i++)
+          //     modalAction(
+          //         actions![i].text,
+          //         actions![i].child,
+          //         actions![i].onPressed,
+          //         MediaQuery.of(context).size.width,
+          //         radius,
+          //         i == actions!.length - 1,
+          //         actions![i].isDestructive,
+          //         actions![i].withTopBorder
+          //     )
+          // ] : [],
+          buttonPadding: const EdgeInsets.all(0),
+        ),
+        AlertDialog(
+          title: Column(
+            children: [
+              image ?? const SizedBox(height: 12),
+              Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+              SizedBox(height: info != null ? 18 : 0),
+              Text(info ?? '', style: const TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
+              SizedBox(height: content == null ? 12 : 0)
+            ],
+          ),
+          insetPadding: insetPadding,
+          // content: content,
+          contentPadding: EdgeInsets.zero,
+          content: //actions != null ? actions!.length > 4 ?
+          IntrinsicHeight(child:
+            Column(
+              children: [
+                SizedBox(
+                    height: 190,
+                    child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            for (var i = 0; i < actions!.length; i++)
+                              modalAction(
+                                actions![i].text,
+                                actions![i].child,
+                                actions![i].onPressed,
+                                MediaQuery.of(context).size.width /3,
+                                radius,
+                                i == 0,
+                                i == actions!.length - 1,
+                                actions![i].isDestructive,
+                                actions![i].withTopBorder
+                              )
+                          ],
+                        )
                     )
-                )
-            ),
-            // modalAction(
-            //     actions![actions!.length -1].text,
-            //     actions![actions!.length -1].child,
-            //     actions![actions!.length -1].onPressed,
-            //     MediaQuery.of(context).size.width /3,
+                ),
+                // modalAction(
+                //     actions![actions!.length -1].text,
+                //     actions![actions!.length -1].child,
+                //     actions![actions!.length -1].onPressed,
+                //     MediaQuery.of(context).size.width /3,
+                //     radius,
+                //     actions!.length -1 == actions!.length - 1,
+                //     actions![actions!.length -1].isDestructive,
+                //     actions![actions!.length -1].withTopBorder
+                // )
+              ],
+            )
+            // for (var i = 0; i < actions!.length; i++)
+            //   modalAction(
+            //     actions![i].text,
+            //     actions![i].onPressed,
+            //     MediaQuery.of(context).size.width,
             //     radius,
-            //     actions!.length -1 == actions!.length - 1,
-            //     actions![actions!.length -1].isDestructive,
-            //     actions![actions!.length -1].withTopBorder
-            // )
-          ],
+            //     i == actions!.length - 1,
+            //     actions![i].isDestructive
+            //   )
+          //  : [
+          //   for (var i = 0; i < actions!.length; i++)
+          //     modalAction(
+          //         actions![i].text,
+          //         actions![i].child,
+          //         actions![i].onPressed,
+          //         MediaQuery.of(context).size.width,
+          //         radius,
+          //         i == actions!.length - 1,
+          //         actions![i].isDestructive,
+          //         actions![i].withTopBorder
+          //     )
+          // ] : [],
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius),
+          ),
         )
-        // for (var i = 0; i < actions!.length; i++)
-        //   modalAction(
-        //     actions![i].text,
-        //     actions![i].onPressed,
-        //     MediaQuery.of(context).size.width,
-        //     radius,
-        //     i == actions!.length - 1,
-        //     actions![i].isDestructive
-        //   )
-      //  : [
-      //   for (var i = 0; i < actions!.length; i++)
-      //     modalAction(
-      //         actions![i].text,
-      //         actions![i].child,
-      //         actions![i].onPressed,
-      //         MediaQuery.of(context).size.width,
-      //         radius,
-      //         i == actions!.length - 1,
-      //         actions![i].isDestructive,
-      //         actions![i].withTopBorder
-      //     )
-      // ] : [],
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(radius),
-      ),
-    )
-      ]);
+      ] 
+    );
   }
 
   Widget modalAction(String text, Widget? child, Function()? onPressed, double width, double radius, bool first, bool last, bool isDestructive, bool withTopBorder) {
@@ -626,33 +629,69 @@ class DoubleDialog extends StatelessWidget {
         ),
       ),
       child: InkWell(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
-          onTap: onPressed,
-          child: Column(
-            children: [
-              // Divider(height: 0, thickness: 1),
-              Container(
-                  width: width,
-                  decoration: BoxDecoration(
-                      border: Border(
-                          top: BorderSide(
-                              color: withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
-                              width: withTopBorder ? 1 : 0
-                          )
-                      )
-                  ),
-                  padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
-                  child: Center(
-                      child: child ?? Text(text,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? AvicennaColors.danger : Colors.black)
-                      )
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(last ? radius : 0), bottomRight: Radius.circular(last ? radius : 0)),
+        onTap: onPressed,
+        child: Column(
+          children: [
+            // Divider(height: 0, thickness: 1),
+            Container(
+              width: width,
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
+                    width: withTopBorder ? 1 : 0
                   )
-              ),
-            ],
-          )
+                )
+             ),
+              padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
+              child: Center(
+                child: child ?? Text(text,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? AvicennaColors.danger : Colors.black)
+                )
+              )
+            ),
+          ],
+        )
       ),
     );
   }
+}
+
+class AvicennaFullScreenDialog extends StatelessWidget {
+  const AvicennaFullScreenDialog({
+    Key? key,
+    required this.title,
+    required this.content,
+    this.backgroundColor = AvicennaColors.lightBackground,
+  }) : super(key: key);
+
+  final String title;
+  final Widget content;
+  final Color backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: AppBar(
+        leading: const BackButton(
+          color: Colors.black
+        ),
+        // centerTitle: true,
+        title: Text(title, style: const TextStyle(
+            color: Colors.black
+        )),
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white
+      ),
+      body: content
+    );
+  }
+
 }
 
 void showAvicennaDialog({

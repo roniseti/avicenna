@@ -105,9 +105,11 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
       value: 0.0,
       vsync: this,
     );
+
     _opacityAnimation = _animationController
-        .drive(CurveTween(curve: Curves.decelerate))
-        .drive(_opacityTween);
+      .drive(CurveTween(curve: Curves.decelerate))
+      .drive(_opacityTween);
+    
     _setTween();
   }
 
@@ -148,8 +150,9 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
     if (_animationController.isAnimating) return;
     final bool wasHeldDown = _buttonHeldDown;
     final TickerFuture ticker = _buttonHeldDown
-        ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
-        : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
+      // ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
+      ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeOutCubic)
+      : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
     ticker.then<void>((void value) {
       if (mounted && wasHeldDown != _buttonHeldDown) _animate();
     });
@@ -306,9 +309,11 @@ class _AvicennaPressState extends State<AvicennaPress> with SingleTickerProvider
       value: 0.0,
       vsync: this,
     );
+    
     _opacityAnimation = _animationController
-        .drive(CurveTween(curve: Curves.decelerate))
-        .drive(_opacityTween);
+      .drive(CurveTween(curve: Curves.decelerate))
+      .drive(_opacityTween);
+    
     _setTween();
   }
 
@@ -349,8 +354,9 @@ class _AvicennaPressState extends State<AvicennaPress> with SingleTickerProvider
     if (_animationController.isAnimating) return;
     final bool wasHeldDown = _buttonHeldDown;
     final TickerFuture ticker = _buttonHeldDown
-        ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
-        : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
+      // ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeInOutCubicEmphasized)
+      ? _animationController.animateTo(1.0, duration: kFadeOutDuration, curve: Curves.easeOutCubic)
+      : _animationController.animateTo(0.0, duration: kFadeInDuration, curve: Curves.easeOutCubic);
     ticker.then<void>((void value) {
       if (mounted && wasHeldDown != _buttonHeldDown) _animate();
     });

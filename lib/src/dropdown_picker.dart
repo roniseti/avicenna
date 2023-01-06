@@ -26,6 +26,10 @@ class AvicennaDropDownPicker extends StatelessWidget {
   final Function(String) onChanged;
   final String? Function(String?)? validator;
   final bool obscureText;
+
+  /// if using the decoration, please add this
+  ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
+  ///   border: InputBorder.none
   final InputDecoration? decoration;
   final bool enabled;
   final AvicennaTextFieldStyle textFieldStyle;
@@ -36,20 +40,20 @@ class AvicennaDropDownPicker extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (title != null) Text(title!, style: const TextStyle(
-            color: AvicennaColors.thirdBlack,
-            fontWeight: FontWeight.w400
+          color: AvicennaColors.thirdBlack,
+          fontWeight: FontWeight.w400
         )),
         SizedBox(height: title != null ? 8 : 0),
         Container(
           height: 44, // 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-                : AvicennaColors.textFieldFillDisabled,
+              ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
-                ? null
-                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
+              ? null
+              : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
           child: DropdownButtonFormField<String>(
             value: initialValue == '' ? null : initialValue,
@@ -124,6 +128,10 @@ class AvicennaDropDownWidgetPicker extends StatelessWidget {
   final Function(String) onChanged;
   final String? Function(String?)? validator;
   final bool obscureText;
+
+  /// if using the decoration, please add this
+  ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
+  ///   border: InputBorder.none
   final InputDecoration? decoration;
   final bool enabled;
   final AvicennaTextFieldStyle textFieldStyle;
@@ -142,12 +150,12 @@ class AvicennaDropDownWidgetPicker extends StatelessWidget {
           height: 44, // 51.2,
           decoration: BoxDecoration(
             color: enabled
-                ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-                : AvicennaColors.textFieldFillDisabled,
+              ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
-                ? null
-                : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
+              ? null
+              : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
           child: DropdownButtonFormField<String>(
             value: initialValue == '' ? null : initialValue,
