@@ -15,8 +15,8 @@ class AvicennaActionListGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius),
-          boxShadow: AvicennaProps.boxShadowSoftEqual
+        borderRadius: BorderRadius.circular(radius),
+        boxShadow: AvicennaProps.boxShadowSoftEqual
       ),
       child: Column(
         children: [

@@ -698,13 +698,14 @@ void showAvicennaDialog({
   required BuildContext context,
   bool barrierDismissible = true,
   Color barrierColor = Colors.black12,
+  double blur = 4.0,
   String barrierLabel = 'Dismiss',
   bool useSafeArea = true,
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
-  Duration transitionDuration = const Duration(milliseconds: 300),
-  Duration reverseTransitionDuration = const Duration(milliseconds: 200),
+  Duration transitionDuration = const Duration(milliseconds: 200),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 100),
   FutureOr<void> Function()? whenComplete,
 }) {
   showModal(
@@ -719,13 +720,13 @@ void showAvicennaDialog({
     builder: (context) {
       return barrierDismissible ?
       BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
         child: child
       ) :
       WillPopScope(
         onWillPop: () async => false,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
           child: child
         )
       );
@@ -737,13 +738,14 @@ Future<T?> showAvicennaDialogAsync<T>({
   required BuildContext context,
   bool barrierDismissible = true,
   Color barrierColor = Colors.black12,
+  double blur = 4.0,
   String barrierLabel = 'Dismiss',
   bool useSafeArea = true,
   bool useRootNavigator = true,
   RouteSettings? routeSettings,
   required Widget child,
-  Duration transitionDuration = const Duration(milliseconds: 300),
-  Duration reverseTransitionDuration = const Duration(milliseconds: 200),
+  Duration transitionDuration = const Duration(milliseconds: 200),
+  Duration reverseTransitionDuration = const Duration(milliseconds: 100),
   FutureOr<void> Function()? whenComplete,
 }) async {
   return await showModal(
@@ -758,13 +760,13 @@ Future<T?> showAvicennaDialogAsync<T>({
     builder: (context) {
       return barrierDismissible ?
       BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
         child: child
       ) :
       WillPopScope(
         onWillPop: () async => false,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
           child: child
         )
       );
