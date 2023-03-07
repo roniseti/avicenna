@@ -25,13 +25,12 @@ class AvicennaActionListGroup extends StatelessWidget {
               const Divider(height: 0, thickness: 1),
             ],
             AvicennaMenuAction(
-              text: menus[i].title,
               width: MediaQuery.of(context).size.width,
               onPressed: menus[i].onPressed,
               radius: radius,
               first: i == 0,
               last: i == menus.length - 1,
-              child: Row(
+              child: menus[i].customWidget ?? Row(
                 children: [
                   menus[i].icon,
                   const SizedBox(width: 24),
@@ -46,7 +45,8 @@ class AvicennaActionListGroup extends StatelessWidget {
                         ]
                       ],
                     )
-                  )
+                  ),
+                  menus[i].trailing ?? const SizedBox()
                 ],
               ),
             ),
@@ -60,21 +60,24 @@ class AvicennaActionListGroup extends StatelessWidget {
 class AvicennaActionListItem {
   const AvicennaActionListItem({
     required this.title,
+    this.customWidget,
     this.subTitle,
     this.onPressed,
     required this.icon,
+    this.trailing,
   });
 
   final String title;
+  final Widget? customWidget;
   final String? subTitle;
   final Function()? onPressed;
   final Widget icon;
+  final Widget? trailing;
 }
 
 class AvicennaMenuAction extends StatefulWidget {
   const AvicennaMenuAction({
     Key? key,
-    required this.text,
     this.child,
     this.onPressed,
     required this.width,
@@ -83,7 +86,6 @@ class AvicennaMenuAction extends StatefulWidget {
     required this.last,
   }) : super(key: key);
 
-  final String text;
   final Widget? child;
   final Function()? onPressed;
   final double width;
