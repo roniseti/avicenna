@@ -13,7 +13,8 @@ class AvicennaContainer extends StatelessWidget {
     this.padding = const EdgeInsets.all(18),
     this.borderRadius = 8,
     this.color = Colors.white,
-    this.boxShadow
+    this.boxShadow,
+    this.border
   }) : super(key: key);
 
   final void Function()? onTap;
@@ -25,6 +26,7 @@ class AvicennaContainer extends StatelessWidget {
   final double borderRadius;
   final Color color;
   final List<BoxShadow>? boxShadow;
+  final BoxBorder? border;
   //boxConstrains constrains
 
   @override
@@ -35,7 +37,8 @@ class AvicennaContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(borderRadius),
-        boxShadow: boxShadow
+        boxShadow: boxShadow,
+        border: border
       ),
       child: Material(
         color: color,
@@ -70,6 +73,7 @@ class NewAvicennaContainer extends StatefulWidget {
     this.color = Colors.white,
     this.boxShadow,
     this.isTransparent = false,
+    this.border,
   }) : super(key: key);
 
   final void Function()? onTap;
@@ -82,6 +86,7 @@ class NewAvicennaContainer extends StatefulWidget {
   final Color color;
   final List<BoxShadow>? boxShadow;
   final bool isTransparent;
+  final BoxBorder? border;
 
   @override
   State<NewAvicennaContainer> createState() => _NewAvicennaContainerState();
@@ -167,6 +172,7 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
         color: widget.color,
         borderRadius: BorderRadius.circular(widget.borderRadius),
         boxShadow: widget.boxShadow,
+        border: widget.border
       ),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
@@ -207,6 +213,7 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
             color: widget.isTransparent ? Colors.transparent : widget.color,
             borderRadius: BorderRadius.circular(widget.borderRadius),
             boxShadow: widget.boxShadow,
+            border: widget.border
           ),
           child: Semantics(
             button: true,
@@ -236,6 +243,7 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
             decoration: BoxDecoration(
               color: const Color(0xFFE0E0E0),
               borderRadius: BorderRadius.circular(widget.borderRadius),
+              border: widget.border
             ),
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,

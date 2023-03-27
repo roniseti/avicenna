@@ -56,6 +56,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
               : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
           child: DropdownButtonFormField<String>(
+            key: key,
             value: initialValue == '' ? null : initialValue,
             hint: hint,
             decoration: InputDecoration(
