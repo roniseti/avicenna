@@ -374,7 +374,7 @@ class _AvicennaPasswordFieldV2State extends State<AvicennaPasswordFieldV2> {
                           borderSide: BorderSide(width: 1.6, color: AvicennaColors.textFieldBorder)
                       ),
                       suffixIcon: Padding(
-                        padding: EdgeInsetsDirectional.only(end: 12.0),
+                        padding: const EdgeInsetsDirectional.only(end: 12.0),
                         child: GestureDetector(
                           onTap: _passwordIconChange,
                           child: Icon(_passwordState ? Icons.visibility_off : Icons.visibility, color: AvicennaColors.thirdBlack),

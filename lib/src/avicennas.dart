@@ -16,7 +16,7 @@ String moneyFormat(dynamic intPrice) {
 }
 
 String formatTime(DateTime timestamp) {
-  return timestamp.hour.toString().padLeft(2, '0') + ':' + timestamp.minute.toString().padLeft(2, '0');
+  return '${timestamp.hour.toString().padLeft(2, '0')}:${timestamp.minute.toString().padLeft(2, '0')}';
 }
 
 String generateRandomString({required int len, String chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890'}) {
