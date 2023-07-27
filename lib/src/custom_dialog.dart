@@ -14,6 +14,9 @@ class AvicennaDialog extends StatelessWidget {
     this.content,
     this.actions = const [],
     this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    this.insetHorizontal = 40,
+    this.insetVertical = 24,
+    this.noTitle = false,
   }) : super(key: key);
 
   final Widget? image;
@@ -22,21 +25,26 @@ class AvicennaDialog extends StatelessWidget {
   final Widget? content;
   final List<AvicennaDialogActionItem> actions;
   final EdgeInsets insetPadding;
+  final double insetHorizontal;
+  final double insetVertical;
+  final bool noTitle;
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    double inset1 = width > 500 ? (width / 2) - 250 + insetHorizontal : insetHorizontal;
     var radius = 12.0;
     return AlertDialog(
-      title: Column(
+      title: noTitle ? null : Column(
         children: [
           image ?? const SizedBox(height: 12),
           Text(title ?? '', textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
-          SizedBox(height: info != null ? 18 : 0),
+          SizedBox(height: info != null ? 14 : 0),
           Text(info ?? '', style: const TextStyle(fontSize: 14, color: AvicennaColors.secondBlack), textAlign: TextAlign.center),
-          SizedBox(height: content == null ? 12 : 0)
+          SizedBox(height: content == null ? 6 : 0)
         ],
       ),
-      insetPadding: insetPadding,
+      insetPadding: EdgeInsets.symmetric(horizontal: inset1, vertical: insetVertical),
       content: content,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius),
@@ -56,9 +64,11 @@ class AvicennaDialog extends StatelessWidget {
       [
       Column(
         children: [
+          const Divider(height: 0, thickness: 1),
           SizedBox(
-            height: 180,
+            height: 184,
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               child: Column(
                 children: [
                   for (var i = 0; i < actions.length -1 ; i++) ...[
@@ -73,15 +83,16 @@ class AvicennaDialog extends StatelessWidget {
                     //   actions[i].withTopBorder
                     // ),
                     const SizedBox(height: 1),
-                    const Divider(height: 0, thickness: 1),
+                    if (!noTitle || i > 0) if (i != 0) const Divider(height: 0, thickness: 1),
                     ModalAction(
                       text: actions[i].text,
                       width: MediaQuery.of(context).size.width,
                       onPressed: actions[i].onPressed,
                       radius: radius,
                       last: i == actions.length - 1,
+                      first: noTitle && i == 0,
                       isDestructive: actions[i].isDestructive,
-                      withTopBorder: actions[i].withTopBorder,
+                      // withTopBorder: actions[i].withTopBorder,
                       child: actions[i].child,
                       // child: Text(actions[i].text,
                       //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
@@ -98,9 +109,9 @@ class AvicennaDialog extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             onPressed: actions[actions.length -1].onPressed,
             radius: radius,
-            last: actions.length -1 == actions.length - 1,
+            last: true,
             isDestructive: actions[actions.length -1].isDestructive,
-            withTopBorder: actions[actions.length -1].withTopBorder,
+            // withTopBorder: actions[actions.length -1].withTopBorder,
             child: actions[actions.length -1].child,
             // child: Text(actions[actions.length -1].text,
             //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[actions.length -1].isDestructive ? AvicennaColors.danger : Colors.black)
@@ -119,7 +130,7 @@ class AvicennaDialog extends StatelessWidget {
       //   )
       ] : [
         for (var i = 0; i < actions.length; i++) ...[
-          const Divider(height: 0, thickness: 1),
+          if (!noTitle || i > 0) const Divider(height: 0, thickness: 1),
           // Row(children: [
           // CupertinoButton(
           //   color: Colors.white,
@@ -148,8 +159,9 @@ class AvicennaDialog extends StatelessWidget {
             onPressed: actions[i].onPressed,
             radius: radius,
             last: i == actions.length - 1,
+            first: noTitle && i == 0,
             isDestructive: actions[i].isDestructive,
-            withTopBorder: actions[i].withTopBorder,
+            // withTopBorder: actions[i].withTopBorder,
             child: actions[i].child,
             // child: Text(actions[i].text,
             //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: actions[i].isDestructive ? AvicennaColors.danger : Colors.black)
@@ -257,8 +269,9 @@ class ModalAction extends StatefulWidget {
     required this.width,
     required this.radius,
     required this.last,
+    this.first = false,
     required this.isDestructive,
-    required this.withTopBorder,
+    // required this.withTopBorder,
   }) : super(key: key);
 
   final String text;
@@ -267,8 +280,9 @@ class ModalAction extends StatefulWidget {
   final double width;
   final double radius;
   final bool last;
+  final bool first;
   final bool isDestructive;
-  final bool withTopBorder;
+  // final bool withTopBorder;
 
   @override
   State<ModalAction> createState() => _ModalActionState();
@@ -347,8 +361,13 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(widget.last ? widget.radius : 0), bottomRight: Radius.circular(widget.last ? widget.radius : 0)),
-        color: const Color(0xFFE0E0E0),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(widget.last ? widget.radius : 0),
+          bottomRight: Radius.circular(widget.last ? widget.radius : 0),
+          topLeft: Radius.circular(widget.first ? widget.radius : 0),
+          topRight: Radius.circular(widget.first ? widget.radius : 0)
+        ),
+        // color: const Color(0xFFE0E0E0),
         // border: Border(
         //   top: BorderSide(
         //     color: widget.withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
@@ -373,7 +392,12 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
               opacity: _opacityAnimation,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(widget.last ? widget.radius : 0), bottomRight: Radius.circular(widget.last ? widget.radius : 0)),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(widget.last ? widget.radius : 0),
+                    bottomRight: Radius.circular(widget.last ? widget.radius : 0),
+                    topLeft: Radius.circular(widget.first ? widget.radius : 0),
+                    topRight: Radius.circular(widget.first ? widget.radius : 0)
+                  ),
                   color: const Color(0xFFFFFFFF),
                 ),
                 child: Padding(
@@ -391,7 +415,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
                     //     data: IconThemeData(color: foregroundColor),
                     //     child:
                     widget.child ?? Text(widget.text,
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: widget.isDestructive ? AvicennaColors.danger : Colors.black)
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: widget.isDestructive ? AvicennaColors.danger : Colors.black)
                     ),
                     // ),
                     // ),
