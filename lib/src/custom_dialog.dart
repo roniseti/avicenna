@@ -367,7 +367,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
           topLeft: Radius.circular(widget.first ? widget.radius : 0),
           topRight: Radius.circular(widget.first ? widget.radius : 0)
         ),
-        // color: const Color(0xFFE0E0E0),
+        color: const Color(0xFFE0E0E0),
         // border: Border(
         //   top: BorderSide(
         //     color: widget.withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
