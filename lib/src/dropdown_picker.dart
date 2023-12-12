@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 import 'values.dart';
 
+class AvicennaDropDownItem {
+  const AvicennaDropDownItem({
+    required this.value,
+    required this.text,
+    this.widget,
+  });
+
+  final dynamic value;
+  final String text;
+  final Widget? widget;
+}
+
 /// if using the decoration, please add this
 ///   contentPadding: EdgeInsets.only(left: 16, right: 16),
 ///   border: InputBorder.none
@@ -19,7 +31,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
     this.textFieldStyle = AvicennaTextFieldStyle.filled
   }) : super(key: key);
 
-  final List<String> items;
+  final List<AvicennaDropDownItem> items;
   final String? title;
   final Widget? hint;
   final String? initialValue;
@@ -78,10 +90,10 @@ class AvicennaDropDownPicker extends StatelessWidget {
                 color: Colors.transparent
               )
             ),
-            items: items.map((String value) {
+            items: items.map((AvicennaDropDownItem item) {
               return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value)
+                value: item.value,
+                child: item.widget ?? Text(item.text)
               );
             }).toList(),
             validator: validator,
