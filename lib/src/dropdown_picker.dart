@@ -36,7 +36,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   final Widget? hint;
   final dynamic initialValue;
   final Function(dynamic) onChanged;
-  final String? Function(String?)? validator;
+  final String? Function(dynamic)? validator;
   final bool obscureText;
 
   /// if using the decoration, please add this
@@ -67,7 +67,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
               ? null
               : Border.all(width: 1.6, color: AvicennaColors.textFieldBorder),
           ),
-          child: DropdownButtonFormField<String>(
+          child: DropdownButtonFormField<dynamic>(
             key: key,
             value: initialValue == '' ? null : initialValue,
             hint: hint,
@@ -91,7 +91,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
               )
             ),
             items: items.map((AvicennaDropDownItem item) {
-              return DropdownMenuItem<String>(
+              return DropdownMenuItem<dynamic>(
                 value: item.value,
                 child: item.widget ?? Text(item.text)
               );
