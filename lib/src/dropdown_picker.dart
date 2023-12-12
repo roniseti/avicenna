@@ -35,7 +35,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   final String? title;
   final Widget? hint;
   final String? initialValue;
-  final Function(String) onChanged;
+  final Function(dynamic) onChanged;
   final String? Function(String?)? validator;
   final bool obscureText;
 
