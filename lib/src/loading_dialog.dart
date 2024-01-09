@@ -28,7 +28,7 @@ class AvicennaLoadingDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       elevation: 0,
-      insetPadding: EdgeInsets.all(MediaQuery.of(context).size.width / 2 - 24),
+      insetPadding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 2 - 24),
       contentPadding: const EdgeInsets.all(0),
       content: const AvicennaLoading(),
       shape: RoundedRectangleBorder(
