@@ -74,6 +74,7 @@ class NewAvicennaContainer extends StatefulWidget {
     this.boxShadow,
     this.isTransparent = false,
     this.border,
+    this.semanticLabel
   }) : super(key: key);
 
   final void Function()? onTap;
@@ -87,6 +88,7 @@ class NewAvicennaContainer extends StatefulWidget {
   final List<BoxShadow>? boxShadow;
   final bool isTransparent;
   final BoxBorder? border;
+  final String? semanticLabel;
 
   @override
   State<NewAvicennaContainer> createState() => _NewAvicennaContainerState();
@@ -165,6 +167,7 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
 
   @override
   Widget build(BuildContext context) {
+    bool disabled = widget.onTap != null && widget.onLongPress != null;
     return widget.isTransparent ? Container(
       width: widget.width,
       margin: widget.margin,
@@ -176,13 +179,14 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
       ),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTapDown: _handleTapDown,
-        onTapUp: _handleTapUp,
-        onTapCancel: _handleTapCancel,
+        onTapDown: !disabled ? _handleTapDown : null,
+        onTapUp: !disabled ? _handleTapUp : null,
+        onTapCancel: !disabled ? _handleTapCancel : null,
         onTap: widget.onTap,
         onLongPress: widget.onLongPress,
         child: Semantics(
           button: true,
+          label: widget.semanticLabel,
           child: ConstrainedBox(
             constraints: BoxConstraints(
               // minHeight: widget.minSize!,
@@ -217,6 +221,7 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
           ),
           child: Semantics(
             button: true,
+            label: widget.semanticLabel,
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 // minHeight: widget.minSize!,
@@ -247,13 +252,14 @@ class _NewAvicennaContainerState extends State<NewAvicennaContainer> with Single
             ),
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTapDown: _handleTapDown,
-              onTapUp: _handleTapUp,
-              onTapCancel: _handleTapCancel,
+              onTapDown: !disabled ? _handleTapDown : null,
+              onTapUp: !disabled ? _handleTapUp : null,
+              onTapCancel: !disabled ? _handleTapCancel : null,
               onTap: widget.onTap,
               onLongPress: widget.onLongPress,
               child: Semantics(
                 button: true,
+                label: widget.semanticLabel,
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     // minHeight: widget.minSize!,
@@ -290,12 +296,14 @@ class AvicennaPress extends StatefulWidget {
     this.onLongPress,
     required this.child,
     this.debugColor,
+    this.semanticLabel
   }) : super(key: key);
 
   final void Function()? onTap;
   final void Function()? onLongPress;
   final Widget child;
   final Color? debugColor;
+  final String? semanticLabel;
 
   @override
   State<AvicennaPress> createState() => _AvicennaPressState();
@@ -386,6 +394,7 @@ class _AvicennaPressState extends State<AvicennaPress> with SingleTickerProvider
         } : null,
         child: Semantics(
           button: true,
+          label: widget.semanticLabel,
           child: FadeTransition(
             opacity: _opacityAnimation,
             child: widget.child,

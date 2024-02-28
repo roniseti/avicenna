@@ -367,7 +367,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
           topLeft: Radius.circular(widget.first ? widget.radius : 0),
           topRight: Radius.circular(widget.first ? widget.radius : 0)
         ),
-        color: const Color(0xFFE0E0E0),
+        color: MediaQuery.of(context).platformBrightness == Brightness.light ? const Color(0xFFE0E0E0) : const Color(0xFF808080),
         // border: Border(
         //   top: BorderSide(
         //     color: widget.withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
@@ -398,7 +398,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
                     topLeft: Radius.circular(widget.first ? widget.radius : 0),
                     topRight: Radius.circular(widget.first ? widget.radius : 0)
                   ),
-                  color: const Color(0xFFFFFFFF),
+                  color: Theme.of(context).dialogBackgroundColor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24), //widget.padding ?? (backgroundColor != null
@@ -415,7 +415,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
                     //     data: IconThemeData(color: foregroundColor),
                     //     child:
                     widget.child ?? Text(widget.text,
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: widget.isDestructive ? AvicennaColors.danger : Colors.black)
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: widget.isDestructive ? AvicennaColors.danger : null)
                     ),
                     // ),
                     // ),

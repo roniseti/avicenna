@@ -35,7 +35,8 @@ class AvicennaTextField extends StatelessWidget {
     this.controller,
     this.onTap,
     this.size = AvicennaTextFieldSize.medium,
-    this.autofocus = false
+    this.autofocus = false,
+    this.autovalidateMode,
   }) : super(key: key);
 
   final String? title;
@@ -65,6 +66,7 @@ class AvicennaTextField extends StatelessWidget {
   final Function()? onTap;
   final AvicennaTextFieldSize size;
   final bool autofocus;
+  final AutovalidateMode? autovalidateMode;
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +82,20 @@ class AvicennaTextField extends StatelessWidget {
           padding: EdgeInsets.only(top: maxLines == 1 ? 0 : maxLines == 2 ? 6 : maxLines > 2 ? 12 : 12),
           height: size == AvicennaTextFieldSize.medium ? maxLines == 1 ? 44 : maxLines == 2 ? 56 : maxLines > 2 ? 72 : 72 : 36,// 51.2,
           decoration: BoxDecoration(
-            color: enabled
-              ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-              : AvicennaColors.textFieldFillDisabled,
+            color: Theme.of(context).brightness == Brightness.light
+              // light
+              ? enabled
+              ? textFieldStyle == AvicennaTextFieldStyle.filled
+                ? const Color(0xFFEEEFF0)
+                : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled
+              
+              // dark
+              : enabled
+              ? textFieldStyle == AvicennaTextFieldStyle.filled
+                ? const Color(0xFF2A2B2D)
+                : AvicennaColors.black
+              : AvicennaColors.black,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
               ? null
@@ -101,7 +114,8 @@ class AvicennaTextField extends StatelessWidget {
             maxLength: maxLength,
             maxLines: maxLines,
             autofocus: autofocus,
-            style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.black, fontSize: fontSize),
+            autovalidateMode: autovalidateMode,
+            style: TextStyle(fontSize: fontSize), // color: enabled ? AvicennaColors.black : AvicennaColors.black, 
             decoration: decoration ?? InputDecoration(
               contentPadding: size == AvicennaTextFieldSize.medium
                 ? EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6)
@@ -201,9 +215,20 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
           height: 44,//51.2,
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
-            color: widget.enabled
-              ? widget.textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-              : AvicennaColors.textFieldFillDisabled,
+            color: Theme.of(context).brightness == Brightness.light
+              // light
+              ? widget.enabled
+              ? widget.textFieldStyle == AvicennaTextFieldStyle.filled
+                ? const Color(0xFFEEEFF0)
+                : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled
+              
+              // dark
+              : widget.enabled
+              ? widget.textFieldStyle == AvicennaTextFieldStyle.filled
+                ? const Color(0xFF2A2B2D)
+                : AvicennaColors.black
+              : AvicennaColors.black,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: widget.textFieldStyle == AvicennaTextFieldStyle.filled
               ? null
@@ -226,7 +251,7 @@ class _AvicennaPasswordFieldState extends State<AvicennaPasswordField> {
                   initialValue: widget.initialValue,
                   maxLength: widget.maxLength,
                   autofocus: widget.autofocus,
-                  style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.black),
+                  // style: TextStyle(color: widget.enabled ? AvicennaColors.black : AvicennaColors.black),
                   decoration: widget.decoration ?? InputDecoration(
                     contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 0, top: widget.textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6),
                     border: InputBorder.none,
@@ -442,7 +467,8 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
     this.borderRadius = 8,
     this.controller,
     this.size = AvicennaTextFieldSize.medium,
-    this.autofocus = false
+    this.autofocus = false,
+    this.autovalidateMode
   }) : super(key: key);
 
   final String? title;
@@ -468,6 +494,7 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
   final TextEditingController? controller;
   final AvicennaTextFieldSize size;
   final bool autofocus;
+  final AutovalidateMode? autovalidateMode;
 
 //   @override
 //   _AvicennaTextFieldWithSuffixState createState() => _AvicennaTextFieldWithSuffixState();
@@ -496,9 +523,20 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
           height: size == AvicennaTextFieldSize.medium ? 44 : 36,// 51.2,
           // padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
-            color: enabled
-              ? textFieldStyle == AvicennaTextFieldStyle.filled ? AvicennaColors.textFieldFill : AvicennaColors.white
-              : AvicennaColors.textFieldFillDisabled,
+            color: Theme.of(context).brightness == Brightness.light
+              // light
+              ? enabled
+              ? textFieldStyle == AvicennaTextFieldStyle.filled
+                ? const Color(0xFFEEEFF0)
+                : AvicennaColors.white
+              : AvicennaColors.textFieldFillDisabled
+              
+              // dark
+              : enabled
+              ? textFieldStyle == AvicennaTextFieldStyle.filled
+                ? const Color(0xFF2A2B2D)
+                : AvicennaColors.black
+              : AvicennaColors.black,
             borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
             border: textFieldStyle == AvicennaTextFieldStyle.filled
               ? null
@@ -517,8 +555,9 @@ class AvicennaTextFieldWithSuffix extends StatelessWidget {
                   keyboardType: keyboardType,
                   initialValue: initialValue,
                   maxLength: maxLength,
-                  style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.black),
+                  // style: TextStyle(color: enabled ? AvicennaColors.black : AvicennaColors.black),
                   autofocus: autofocus,
+                  autovalidateMode: autovalidateMode,
                   decoration: decoration ?? InputDecoration(
                     contentPadding: size == AvicennaTextFieldSize.medium
                         ? EdgeInsets.only(left: 16, right: 16, bottom: 0, top: textFieldStyle == AvicennaTextFieldStyle.filled ? -4 : -7.6)

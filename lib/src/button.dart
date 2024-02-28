@@ -38,7 +38,7 @@ class AvicennaButton extends StatelessWidget {
         minimumSize: MaterialStateProperty.all(
           minimumSize ?? const Size(144, 48)
         ),
-        backgroundColor: MaterialStateProperty.all(disabled == true ? AvicennaColors.disabledButton : color ?? AvicennaColors.buttonPrimary),
+        backgroundColor: MaterialStateProperty.all(disabled == true ? Colors.grey.withOpacity(0.5) : color ?? AvicennaColors.buttonPrimary),
         shadowColor: MaterialStateProperty.all(const Color(0x301A77AD)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -73,7 +73,7 @@ class AvicennaIconButton extends StatelessWidget {
 
   final void Function() onTap;
   final String tooltip;
-  final Icon icon;
+  final Widget icon;
   final Color color;
 
   @override
@@ -112,7 +112,7 @@ class AvicennaSmallIconButton extends StatelessWidget {
 
   final void Function() onTap;
   final String tooltip;
-  final Icon icon;
+  final Widget icon;
   final Color color;
   final AvicennaSmallIconButtonSize size;
 
