@@ -12,8 +12,8 @@ export 'src/container.dart';
 export 'src/text_field.dart';
 export 'src/values.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+/// A Greeting.
+class Halo {
+  /// Returns greeting to [name].
+  String greet(String name) => 'Halo %$name';
 }
