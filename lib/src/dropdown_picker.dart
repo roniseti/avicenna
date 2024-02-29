@@ -6,11 +6,13 @@ class AvicennaDropDownItem {
     required this.value,
     required this.text,
     this.widget,
+    this.selectedItemWidget,
   });
 
   final dynamic value;
   final String text;
   final Widget? widget;
+  final Widget? selectedItemWidget;
 }
 
 /// if using the decoration, please add this
@@ -28,7 +30,8 @@ class AvicennaDropDownPicker extends StatelessWidget {
     this.obscureText = false,
     this.decoration,
     this.enabled = true,
-    this.textFieldStyle = AvicennaTextFieldStyle.filled
+    this.textFieldStyle = AvicennaTextFieldStyle.filled,
+    this.isExpanded = true,
   }) : super(key: key);
 
   final List<AvicennaDropDownItem> items;
@@ -45,6 +48,7 @@ class AvicennaDropDownPicker extends StatelessWidget {
   final InputDecoration? decoration;
   final bool enabled;
   final AvicennaTextFieldStyle textFieldStyle;
+  final bool isExpanded; 
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +94,10 @@ class AvicennaDropDownPicker extends StatelessWidget {
                 color: Colors.transparent
               )
             ),
+            isExpanded: isExpanded,
+            selectedItemBuilder: (context) => items.map((AvicennaDropDownItem item) {
+              return item.selectedItemWidget ?? Text(item.text, maxLines: 1, overflow: TextOverflow.ellipsis);
+            }).toList(),
             items: items.map((AvicennaDropDownItem item) {
               return DropdownMenuItem<dynamic>(
                 value: item.value,
