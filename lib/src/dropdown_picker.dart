@@ -6,11 +6,13 @@ class AvicennaDropDownItem {
     required this.value,
     required this.text,
     this.widget,
+    this.selectedItemWidget,
   });
 
   final dynamic value;
   final String text;
   final Widget? widget;
+  final Widget? selectedItemWidget;
 }
 
 /// if using the decoration, please add this
@@ -93,10 +95,13 @@ class AvicennaDropDownPicker extends StatelessWidget {
               )
             ),
             isExpanded: isExpanded,
+            selectedItemBuilder: (context) => items.map((AvicennaDropDownItem item) {
+              return item.selectedItemWidget ?? Text(item.text, maxLines: 1, overflow: TextOverflow.ellipsis);
+            }).toList(),
             items: items.map((AvicennaDropDownItem item) {
               return DropdownMenuItem<dynamic>(
                 value: item.value,
-                child: item.widget ?? Text(item.text, maxLines: 1, overflow: TextOverflow.ellipsis)
+                child: item.widget ?? Text(item.text)
               );
             }).toList(),
             validator: validator,
