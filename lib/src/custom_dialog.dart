@@ -35,6 +35,8 @@ class AvicennaDialog extends StatelessWidget {
     double inset1 = width > 500 ? (width / 2) - 250 + insetHorizontal : insetHorizontal;
     var radius = 12.0;
     return AlertDialog(
+      backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.grey.shade800,
+      surfaceTintColor: Colors.transparent,
       title: noTitle ? null : Column(
         children: [
           image ?? const SizedBox(height: 12),
@@ -44,6 +46,7 @@ class AvicennaDialog extends StatelessWidget {
           SizedBox(height: content == null ? 6 : 0)
         ],
       ),
+      actionsPadding: EdgeInsets.zero,
       insetPadding: EdgeInsets.symmetric(horizontal: inset1, vertical: insetVertical),
       content: content,
       shape: RoundedRectangleBorder(
@@ -64,7 +67,7 @@ class AvicennaDialog extends StatelessWidget {
       [
       Column(
         children: [
-          const Divider(height: 0, thickness: 1),
+          Divider(height: 0, thickness: 1, color: Theme.of(context).dividerColor),
           SizedBox(
             height: 184,
             child: SingleChildScrollView(
@@ -83,7 +86,7 @@ class AvicennaDialog extends StatelessWidget {
                     //   actions[i].withTopBorder
                     // ),
                     const SizedBox(height: 1),
-                    if (!noTitle || i > 0) if (i != 0) const Divider(height: 0, thickness: 1),
+                    if (!noTitle || i > 0) if (i != 0) Divider(height: 0, thickness: 1, color: Theme.of(context).dividerColor),
                     ModalAction(
                       text: actions[i].text,
                       width: MediaQuery.of(context).size.width,
@@ -103,7 +106,7 @@ class AvicennaDialog extends StatelessWidget {
               )
             )
           ),
-          const Divider(height: 0, thickness: 1),
+          Divider(height: 0, thickness: 1, color: Theme.of(context).dividerColor),
           ModalAction(
             text: actions[actions.length -1].text,
             width: MediaQuery.of(context).size.width,
@@ -130,7 +133,7 @@ class AvicennaDialog extends StatelessWidget {
       //   )
       ] : [
         for (var i = 0; i < actions.length; i++) ...[
-          if (!noTitle || i > 0) const Divider(height: 0, thickness: 1),
+          if (!noTitle || i > 0) Divider(height: 0, thickness: 1, color: Theme.of(context).dividerColor),
           // Row(children: [
           // CupertinoButton(
           //   color: Colors.white,
@@ -367,7 +370,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
           topLeft: Radius.circular(widget.first ? widget.radius : 0),
           topRight: Radius.circular(widget.first ? widget.radius : 0)
         ),
-        color: MediaQuery.of(context).platformBrightness == Brightness.light ? const Color(0xFFE0E0E0) : const Color(0xFF808080),
+        color: Theme.of(context).brightness == Brightness.light ? const Color(0xFFE0E0E0) : const Color(0xFF808080),
         // border: Border(
         //   top: BorderSide(
         //     color: widget.withTopBorder ? AvicennaColors.disabledButton : Colors.transparent,
@@ -398,7 +401,7 @@ class _ModalActionState extends State<ModalAction> with SingleTickerProviderStat
                     topLeft: Radius.circular(widget.first ? widget.radius : 0),
                     topRight: Radius.circular(widget.first ? widget.radius : 0)
                   ),
-                  color: Theme.of(context).dialogBackgroundColor,
+                  color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.grey.shade800,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24), //widget.padding ?? (backgroundColor != null
